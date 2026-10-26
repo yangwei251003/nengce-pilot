@@ -1,0 +1,152 @@
+{
+  "dataset_id": "bdg2-bull-office-rob",
+  "evaluation_role": "external",
+  "selected_model": "HistGradientBoosting",
+  "selection_reason": "冻结development sites汇总政策；本外部站不重新选赢家。",
+  "policy": {
+    "selected_index": 0,
+    "selected_model": "HistGradientBoosting",
+    "selection_reason": "HGB在开发滚动验证MAE改善13.63%，且胜出3/3窗，达到冻结门槛。",
+    "selection_policy": {
+      "minimum_mae_improvement_pct": 2.0,
+      "minimum_fold_wins": 2,
+      "observed_mae_improvement_pct": 13.629880537799721,
+      "observed_fold_wins": 3,
+      "baseline": "Daily naive"
+    },
+    "validation": [
+      {
+        "name": "HistGradientBoosting",
+        "n": 77534,
+        "mae_kw": 7.004021463761281
+      },
+      {
+        "name": "Daily naive",
+        "n": 77534,
+        "mae_kw": 8.10931084427477
+      },
+      {
+        "name": "Weekly naive",
+        "n": 77534,
+        "mae_kw": 8.591634627389274
+      }
+    ],
+    "rolling_validation": [
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 25052,
+            "mae_kw": 6.802839989122383
+          },
+          {
+            "name": "Daily naive",
+            "n": 25052,
+            "mae_kw": 7.779895098195753
+          },
+          {
+            "name": "Weekly naive",
+            "n": 25052,
+            "mae_kw": 8.338303241258183
+          }
+        ]
+      },
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 26085,
+            "mae_kw": 7.192975518284175
+          },
+          {
+            "name": "Daily naive",
+            "n": 26085,
+            "mae_kw": 8.371224270653633
+          },
+          {
+            "name": "Weekly naive",
+            "n": 26085,
+            "mae_kw": 8.800619355951696
+          }
+        ]
+      },
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 26397,
+            "mae_kw": 7.0082314796882414
+          },
+          {
+            "name": "Daily naive",
+            "n": 26397,
+            "mae_kw": 8.163124214872903
+          },
+          {
+            "name": "Weekly naive",
+            "n": 26397,
+            "mae_kw": 8.625543451907415
+          }
+        ]
+      }
+    ],
+    "absolute_q90_fraction": 0.28403783238100855,
+    "positive_q75_fraction": 0.07900734289952144,
+    "calibration_method": "Median development-building normalized residual quantile; external scale from 2016 only",
+    "external_train_end": "2016-12-31",
+    "model_parameters": {
+      "max_iter": 140,
+      "max_leaf_nodes": 15,
+      "learning_rate": 0.07,
+      "l2_regularization": 10,
+      "early_stopping": false,
+      "random_state": 42
+    }
+  },
+  "new_independent_generalization_evidence": true,
+  "train_start": "2016-01-01",
+  "train_end": "2016-12-31",
+  "test_start": "2017-10-01",
+  "test_end": "2017-12-31",
+  "training_rows": 8430,
+  "scored_intervals": 2202,
+  "evaluation_intervals": 2208,
+  "observed_evaluation_pct": 99.72826086956522,
+  "models": [
+    {
+      "name": "HistGradientBoosting",
+      "mae_kw": 24.732693795826094,
+      "wape_pct": 9.653262765237985,
+      "rmse_kw": 48.223921408647655,
+      "n": 2202
+    },
+    {
+      "name": "Daily naive",
+      "mae_kw": 37.655313351498634,
+      "wape_pct": 14.69700944386149,
+      "rmse_kw": 77.42739999937382,
+      "n": 2202
+    },
+    {
+      "name": "Weekly naive",
+      "mae_kw": 41.41734786557675,
+      "wape_pct": 16.16534556592269,
+      "rmse_kw": 86.19069062180533,
+      "n": 2202
+    }
+  ],
+  "selected_metrics": {
+    "name": "HistGradientBoosting",
+    "mae_kw": 24.732693795826094,
+    "wape_pct": 9.653262765237985,
+    "rmse_kw": 48.223921408647655,
+    "n": 2202
+  },
+  "interval_coverage_pct": 93.64214350590372,
+  "notes": [
+    "No external-site 2017 observations used for training or model selection.",
+    "Daily-origin lag features may consume completed previous days in Q4; no target-day values enter forecasts.",
+    "Missing test truth excluded and coverage disclosed, never interpolated for a score."
+  ],
+  "frozen_selection_sha256": "167355573ab67d97056bc297571193ec313d8364d27d704167811049b331defb"
+}

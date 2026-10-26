@@ -1,0 +1,32 @@
+{
+  "created_at_utc": "2026-10-04T06:22:35.504455+00:00",
+  "stage": "before_first_model_evaluation_of_new_sources",
+  "protocol_sha256": "517bb93869be3debd13483e6c87e49fc5b8047c3fe0c919419fedde3658221af",
+  "model_protocol_sha256": "777ad4428c6ce008a1305b07fcc5b622ffe6877f3b0fb2909898014aa0a907a1",
+  "model_parameters": {
+    "max_iter": 140,
+    "max_leaf_nodes": 15,
+    "learning_rate": 0.07,
+    "l2_regularization": 10,
+    "early_stopping": false,
+    "random_state": 42
+  },
+  "code_files": {
+    "api.py": "8a9bb65d522b8adb9409117ee09ed24a69bded00c87de83c62e71ad82d1f1406",
+    "assistant.py": "be37e22b17bbcf4d28db312444f950da6f525f7ea679668333e63663dbf1dff4",
+    "billing.py": "bf5bc63030a53c8d3093ba05cf08904cca7c5ab53c7515cbc4c484535c8eb0bc",
+    "config.py": "c92625619c4991994c1fec8214e68b5ab3800730fc6120b8e00083902bc0d4ed",
+    "core.py": "76f3a9347c972833f559fe80197d526294e98b2e6fa59140b9fb3fe6c80e6bcf",
+    "data.py": "61ea55e0c45a906c06fff9c4ad56ea084ac2ca706c0b3d3d12cc2438f166cc88",
+    "evidence.py": "dfc4431cde34e66c52adf20ad6dee87ecfac68e1738bf6b61d15f5140349d425",
+    "forecast.py": "31b9f4eb5cb660003697eb342b6a35dbf5837fdaad113882411506d2dbf6d1f4",
+    "planner.py": "0995863921b19f3123c76a5fa6be8cdcb0daca4a76de1fb99e6bde2b3f10968b",
+    "provider.py": "cadb84d52e7d15fd301edd9ddb2dc487ab1ffefb1d6c7ba1d560ea21c0fa4ce2",
+    "store.py": "6694c7ca6ded4299333f52b61a2fc71919095755ebb5c13daf7ccba34bd840f7",
+    "__init__.py": "5a6f89cc211448b4de0d70952f67f0950a42eece0d87394cd7de49c47e59a880"
+  },
+  "data_catalog_hashes": {},
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.6",
+  "budget": "one fixed HGB configuration; no parameter search; 3 development windows; no external-site selection"
+}

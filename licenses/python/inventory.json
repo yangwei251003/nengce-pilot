@@ -1,0 +1,201 @@
+[
+  {
+    "package": "annotated-doc",
+    "version": "0.0.5",
+    "notices": [
+      "annotated_doc-0.0.5.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "annotated-types",
+    "version": "0.8.0",
+    "notices": [
+      "annotated_types-0.8.0.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "anyio",
+    "version": "4.15.1",
+    "notices": [
+      "anyio-4.15.1.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "certifi",
+    "version": "2026.7.22",
+    "notices": [
+      "certifi-2026.7.22.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "click",
+    "version": "8.5.0",
+    "notices": [
+      "click-8.5.0.dist-info/licenses/LICENSE.txt"
+    ]
+  },
+  {
+    "package": "cloudpickle",
+    "version": "3.1.2",
+    "notices": [
+      "cloudpickle-3.1.2.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "fastapi",
+    "version": "0.141.1",
+    "notices": [
+      "fastapi-0.141.1.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "h11",
+    "version": "0.16.0",
+    "notices": [
+      "h11-0.16.0.dist-info/licenses/LICENSE.txt"
+    ]
+  },
+  {
+    "package": "httpcore",
+    "version": "1.0.9",
+    "notices": [
+      "httpcore-1.0.9.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  {
+    "package": "httpx",
+    "version": "0.28.1",
+    "notices": [
+      "httpx-0.28.1.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  {
+    "package": "idna",
+    "version": "3.20",
+    "notices": [
+      "idna-3.20.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  {
+    "package": "joblib",
+    "version": "1.6.0",
+    "notices": [
+      "joblib-1.6.0.dist-info/licenses/LICENSE.txt"
+    ]
+  },
+  {
+    "package": "numpy",
+    "version": "2.3.5",
+    "notices": [
+      "numpy-2.3.5.dist-info/LICENSE.txt",
+      "numpy/_core/include/numpy/random/LICENSE.txt",
+      "numpy/ma/LICENSE",
+      "numpy/random/LICENSE.md"
+    ]
+  },
+  {
+    "package": "pandas",
+    "version": "2.2.3",
+    "notices": [
+      "pandas-2.2.3.dist-info/LICENSE"
+    ]
+  },
+  {
+    "package": "pydantic",
+    "version": "2.13.4",
+    "notices": [
+      "pydantic-2.13.4.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "pydantic_core",
+    "version": "2.46.4",
+    "notices": [
+      "pydantic_core-2.46.4.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "python-dateutil",
+    "version": "2.9.0.post0",
+    "notices": [
+      "python_dateutil-2.9.0.post0.dist-info/LICENSE"
+    ]
+  },
+  {
+    "package": "pytz",
+    "version": "2026.5",
+    "notices": [
+      "pytz-2026.5.dist-info/LICENSE.txt"
+    ]
+  },
+  {
+    "package": "scikit-learn",
+    "version": "1.8.0",
+    "notices": [
+      "scikit_learn-1.8.0.dist-info/licenses/COPYING",
+      "sklearn/externals/array_api_compat/LICENSE",
+      "sklearn/externals/array_api_extra/LICENSE"
+    ]
+  },
+  {
+    "package": "scipy",
+    "version": "1.17.0",
+    "notices": [
+      "scipy-1.17.0.dist-info/LICENSE.txt",
+      "scipy/_lib/_uarray/LICENSE",
+      "scipy/fft/_pocketfft/LICENSE.md",
+      "scipy/integrate/LICENSE_DOP",
+      "scipy/spatial/qhull_src/COPYING_QHULL.txt"
+    ]
+  },
+  {
+    "package": "six",
+    "version": "1.17.0",
+    "notices": [
+      "six-1.17.0.dist-info/LICENSE"
+    ]
+  },
+  {
+    "package": "starlette",
+    "version": "1.7.0",
+    "notices": [
+      "starlette-1.7.0.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  {
+    "package": "threadpoolctl",
+    "version": "3.6.0",
+    "notices": [
+      "threadpoolctl-3.6.0.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "typing-inspection",
+    "version": "0.4.4",
+    "notices": [
+      "typing_inspection-0.4.4.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "typing_extensions",
+    "version": "4.16.0",
+    "notices": [
+      "typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "package": "tzdata",
+    "version": "2026.5",
+    "notices": [
+      "tzdata-2026.5.dist-info/licenses/LICENSE",
+      "tzdata-2026.5.dist-info/licenses/licenses/LICENSE_APACHE"
+    ]
+  },
+  {
+    "package": "uvicorn",
+    "version": "0.52.1",
+    "notices": [
+      "uvicorn-0.52.1.dist-info/licenses/LICENSE.md"
+    ]
+  }
+]

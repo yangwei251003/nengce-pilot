@@ -1,0 +1,6861 @@
+{
+  "mode": "read-only-precomputed-public-case",
+  "notice": "只读预计算公开案例；GitHub Pages 不运行 Python、不接收文件、不调用模型。",
+  "sourceResultSha256": "417d22fc7986b9fb82a429f97b8679f8badf26f05f70455404ddcbbef9dfdc3d",
+  "runId": "run-63d20467d2ce",
+  "generatedAt": "2026-10-26T09:58:14.642266+00:00",
+  "summary": {
+    "period_start": "2018-12-01 00:00:00",
+    "period_end": "2018-12-01 23:45:00",
+    "hours": 24.0,
+    "intervals": 96,
+    "interval_minutes": 15,
+    "interval_hours": 0.25,
+    "days": 1,
+    "source_label": "真实来源负荷／光伏 + 示例电池与计费合同",
+    "warnings": [
+      "学习预测在本次报告区间劣于周朴素；模型选择只依据先前开发验证，不用此结果临时换赢家。",
+      "全部费用属于公开／声明授权数据与示例合同，不是已实现客户收益或真实账单。",
+      "此区间是历史回归或探索；不构成新独立泛化证明。"
+    ],
+    "elapsed_seconds": 15.578097000005073,
+    "selected_model": "HistGradientBoosting",
+    "selected_pv_model": "Zero PV (source has no PV)",
+    "recommended_strategy": "B2",
+    "recommendation_reason": "开发规则选定方案通过本场景有效性检查。",
+    "cumulative_cost_scope": "Interval curves contain energy + throughput proxy; monthly demand is in monthly_bills",
+    "comparison_valid": true,
+    "physical_valid": true,
+    "demand_status": [
+      "disabled_by_contract"
+    ]
+  },
+  "dataset": {
+    "dataset_id": "uci-steel-15min",
+    "name": "UCI 钢厂 · 原生15分钟",
+    "privacy": "public",
+    "public_data": true,
+    "interval_minutes": 15,
+    "timezone": "source-local; UCI未提供时区",
+    "source_id": "uci-steel-2018"
+  },
+  "provenance": {
+    "source_url": "https://archive.ics.uci.edu/dataset/851/steel%2Bindustry%2Benergy%2Bconsumption",
+    "license": "CC BY 4.0",
+    "doi": "10.24432/C52G8C",
+    "attribution": "V E, S., Shin, C., & Cho, Y. (2021). Steel Industry Energy Consumption. UCI.",
+    "transformation": "UCI工程推断区间末减15分钟；Usage_kWh÷0.25平均kW；小时采用四点均值。原行政时区未知。",
+    "warning": "午夜含义为工程推断，未由作者确认；公开韩国工厂负荷+合成中国币种电价和电池，非客户收益。"
+  },
+  "strategies": [
+    {
+      "id": "B0",
+      "name": "无储能",
+      "energy_cost": 721.9374999999999,
+      "demand_cost": 0.0,
+      "degradation_cost": 0.0,
+      "total_cost": 721.9374999999999,
+      "known_cost_subtotal": 721.9374999999999,
+      "cost_complete": true,
+      "savings_vs_b0": 0.0,
+      "savings_pct": 0.0,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 0.0,
+      "discharge_kwh": 0.0,
+      "throughput_kwh": 0.0,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 0.0,
+      "forecast_plan_cost": null,
+      "plan_replay_gap": null,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 0,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 721.9374999999999,
+          "demand_cost": 0.0,
+          "degradation_cost": 0.0,
+          "utility_bill": 721.9374999999999,
+          "total_cost": 721.9374999999999,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 0.0,
+      "clip_no_export_kwh": 0.0,
+      "clip_soc_kwh": 0.0,
+      "clip_power_kwh": 0.0,
+      "clip_charge_kwh": 0.0,
+      "clip_discharge_kwh": 0.0,
+      "clip_retained_energy_kwh": 0.0,
+      "clip_local_cost_delta": 0.0,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 0.0,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "B1",
+      "name": "固定峰谷规则",
+      "energy_cost": 692.9743421052632,
+      "demand_cost": 0.0,
+      "degradation_cost": 2.4031578947368417,
+      "total_cost": 695.3775,
+      "known_cost_subtotal": 695.3775,
+      "cost_complete": true,
+      "savings_vs_b0": 26.55999999999983,
+      "savings_pct": 3.6789888321357234,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 42.10526315789474,
+      "discharge_kwh": 38.0,
+      "throughput_kwh": 80.10526315789474,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 4.440892098500626e-16,
+      "forecast_plan_cost": null,
+      "plan_replay_gap": null,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 0,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 692.9743421052632,
+          "demand_cost": 0.0,
+          "degradation_cost": 2.4031578947368417,
+          "utility_bill": 692.9743421052632,
+          "total_cost": 695.3775,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 0.0,
+      "clip_no_export_kwh": 0.0,
+      "clip_soc_kwh": 0.0,
+      "clip_power_kwh": 0.0,
+      "clip_charge_kwh": 0.0,
+      "clip_discharge_kwh": 0.0,
+      "clip_retained_energy_kwh": 0.0,
+      "clip_local_cost_delta": 0.0,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 0.0,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "B2",
+      "name": "开发验证所选预测 + 滚动优化",
+      "energy_cost": 653.8306762422735,
+      "demand_cost": 0.0,
+      "degradation_cost": 6.969157894736842,
+      "total_cost": 660.7998341370104,
+      "known_cost_subtotal": 660.7998341370104,
+      "cost_complete": true,
+      "savings_vs_b0": 61.13766586298948,
+      "savings_pct": 8.468553837830767,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 122.10526315789474,
+      "discharge_kwh": 110.19999999999999,
+      "throughput_kwh": 232.30526315789473,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 3.552713678800501e-15,
+      "forecast_plan_cost": 1119.1145356048712,
+      "plan_replay_gap": -458.3147014678608,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 96,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 653.8306762422735,
+          "demand_cost": 0.0,
+          "degradation_cost": 6.969157894736842,
+          "utility_bill": 653.8306762422735,
+          "total_cost": 660.7998341370104,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 11.534350591990318,
+      "clip_no_export_kwh": 11.534350591990313,
+      "clip_soc_kwh": 6.661338147750939e-16,
+      "clip_power_kwh": 5.329070518200751e-15,
+      "clip_charge_kwh": 3.552713678800501e-15,
+      "clip_discharge_kwh": 11.534350591990314,
+      "clip_retained_energy_kwh": 12.141421675779275,
+      "clip_local_cost_delta": 12.918472663029148,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 11.534350591990318,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "N1",
+      "name": "周朴素预测 + 同一滚动优化器",
+      "energy_cost": 650.9353968144046,
+      "demand_cost": 0.0,
+      "degradation_cost": 7.139592382271467,
+      "total_cost": 658.074989196676,
+      "known_cost_subtotal": 658.0749891966757,
+      "cost_complete": true,
+      "savings_vs_b0": 63.86251080332386,
+      "savings_pct": 8.84598885683648,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 125.09141274238226,
+      "discharge_kwh": 112.89499999999998,
+      "throughput_kwh": 237.98641274238224,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 2.6645352591003757e-15,
+      "forecast_plan_cost": 204.09997091412737,
+      "plan_replay_gap": 453.97501828254866,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 96,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 650.9353968144046,
+          "demand_cost": 0.0,
+          "degradation_cost": 7.139592382271467,
+          "utility_bill": 650.9353968144046,
+          "total_cost": 658.074989196676,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 6.217248937900877e-15,
+      "clip_no_export_kwh": 0.0,
+      "clip_soc_kwh": 8.881784197001252e-16,
+      "clip_power_kwh": 5.329070518200751e-15,
+      "clip_charge_kwh": 3.552713678800501e-15,
+      "clip_discharge_kwh": 2.6645352591003757e-15,
+      "clip_retained_energy_kwh": -5.70304037912712e-16,
+      "clip_local_cost_delta": 3.9079850466805466e-16,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 6.217248937900877e-15,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "L1",
+      "name": "固定HGB学习预测 + 同一优化器",
+      "energy_cost": 653.8306762422735,
+      "demand_cost": 0.0,
+      "degradation_cost": 6.969157894736842,
+      "total_cost": 660.7998341370104,
+      "known_cost_subtotal": 660.7998341370104,
+      "cost_complete": true,
+      "savings_vs_b0": 61.13766586298948,
+      "savings_pct": 8.468553837830767,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 122.10526315789474,
+      "discharge_kwh": 110.19999999999999,
+      "throughput_kwh": 232.30526315789473,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 3.552713678800501e-15,
+      "forecast_plan_cost": 1119.1145356048712,
+      "plan_replay_gap": -458.3147014678608,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 96,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 653.8306762422735,
+          "demand_cost": 0.0,
+          "degradation_cost": 6.969157894736842,
+          "utility_bill": 653.8306762422735,
+          "total_cost": 660.7998341370104,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 11.534350591990318,
+      "clip_no_export_kwh": 11.534350591990313,
+      "clip_soc_kwh": 6.661338147750939e-16,
+      "clip_power_kwh": 5.329070518200751e-15,
+      "clip_charge_kwh": 3.552713678800501e-15,
+      "clip_discharge_kwh": 11.534350591990314,
+      "clip_retained_energy_kwh": 12.141421675779275,
+      "clip_local_cost_delta": 12.918472663029148,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 11.534350591990318,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "O1",
+      "name": "逐日完美预知诊断，不可部署",
+      "energy_cost": 642.6036426592798,
+      "demand_cost": 0.0,
+      "degradation_cost": 8.547020775623267,
+      "total_cost": 651.1506634349031,
+      "known_cost_subtotal": 651.150663434903,
+      "cost_complete": true,
+      "savings_vs_b0": 70.78683656509679,
+      "savings_pct": 9.80511977353951,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 149.7506925207756,
+      "discharge_kwh": 135.14999999999998,
+      "throughput_kwh": 284.9006925207756,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 4.440892098500626e-15,
+      "forecast_plan_cost": 651.150663434903,
+      "plan_replay_gap": 1.1368683772161603e-13,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 1,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 642.6036426592798,
+          "demand_cost": 0.0,
+          "degradation_cost": 8.547020775623267,
+          "utility_bill": 642.6036426592798,
+          "total_cost": 651.1506634349031,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 1.509903313490213e-14,
+      "clip_no_export_kwh": 0.0,
+      "clip_soc_kwh": 1.509903313490213e-14,
+      "clip_power_kwh": 0.0,
+      "clip_charge_kwh": 0.0,
+      "clip_discharge_kwh": 1.509903313490213e-14,
+      "clip_retained_energy_kwh": 1.5893719089370663e-14,
+      "clip_local_cost_delta": 1.6910917111090384e-14,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 1.509903313490213e-14,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "R1",
+      "name": "所选预测 + 固定误差余量",
+      "energy_cost": 655.1213870304174,
+      "demand_cost": 0.0,
+      "degradation_cost": 6.432480605493257,
+      "total_cost": 661.5538676359107,
+      "known_cost_subtotal": 661.5538676359104,
+      "cost_complete": true,
+      "savings_vs_b0": 60.38363236408918,
+      "savings_pct": 8.364108023767873,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 112.7022445114894,
+      "discharge_kwh": 101.71377567161917,
+      "throughput_kwh": 214.41602018310857,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 3.1086244689504383e-15,
+      "forecast_plan_cost": 1119.114535604871,
+      "plan_replay_gap": -457.5606679689603,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 96,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 655.1213870304174,
+          "demand_cost": 0.0,
+          "degradation_cost": 6.432480605493257,
+          "utility_bill": 655.1213870304174,
+          "total_cost": 661.5538676359107,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 6.189783203088942,
+      "clip_no_export_kwh": 6.189783203088939,
+      "clip_soc_kwh": 0.0,
+      "clip_power_kwh": 3.552713678800501e-15,
+      "clip_charge_kwh": 0.0,
+      "clip_discharge_kwh": 6.189783203088942,
+      "clip_retained_energy_kwh": 6.515561266409414,
+      "clip_local_cost_delta": 6.932557187459614,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 6.189783203088942,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    },
+    {
+      "id": "R2",
+      "name": "所选预测 + 终端可达余量预算",
+      "energy_cost": 655.1213870304174,
+      "demand_cost": 0.0,
+      "degradation_cost": 6.432480605493257,
+      "total_cost": 661.5538676359107,
+      "known_cost_subtotal": 661.5538676359104,
+      "cost_complete": true,
+      "savings_vs_b0": 60.38363236408918,
+      "savings_pct": 8.364108023767873,
+      "peak_grid_kw": 122.24,
+      "charge_kwh": 112.7022445114894,
+      "discharge_kwh": 101.71377567161917,
+      "throughput_kwh": 214.41602018310857,
+      "curtailment_kwh": 0.0,
+      "terminal_error_kwh": 0.0,
+      "terminal_errors_by_day_kwh": [
+        0.0
+      ],
+      "max_soc_violation_kwh": 0.0,
+      "simultaneous_count": 0,
+      "grid_violation_kwh": 0.0,
+      "max_balance_error_kwh": 3.1086244689504383e-15,
+      "forecast_plan_cost": 1119.114535604871,
+      "plan_replay_gap": -457.5606679689603,
+      "forecast_plan_cost_scope": "Sum of daily-origin predicted energy, proxy and incremental demand objectives; not a feasible whole-month bill or clipping loss",
+      "solver": {
+        "optimal": 96,
+        "feasible": 0,
+        "failed": 0,
+        "margin_plan_failed": 0,
+        "fallback": 0
+      },
+      "margin_plan_failures": 0,
+      "fallback_count": 0,
+      "physical_valid": true,
+      "comparison_valid": true,
+      "monthly_bills": [
+        {
+          "month": "2018-12",
+          "observed_intervals": 96,
+          "expected_intervals": 2976,
+          "complete_observed_month": false,
+          "peak_grid_kw": 122.24,
+          "energy_cost": 655.1213870304174,
+          "demand_cost": 0.0,
+          "degradation_cost": 6.432480605493257,
+          "utility_bill": 655.1213870304174,
+          "total_cost": 661.5538676359107,
+          "demand_status": "disabled_by_contract",
+          "demand_rate_per_kw": 0,
+          "time_basis": "source-local-unknown",
+          "billing_identity": "illustrative",
+          "actual_contract_verified": false
+        }
+      ],
+      "clip_kwh": 6.189783203088942,
+      "clip_no_export_kwh": 6.189783203088939,
+      "clip_soc_kwh": 0.0,
+      "clip_power_kwh": 3.552713678800501e-15,
+      "clip_charge_kwh": 0.0,
+      "clip_discharge_kwh": 6.189783203088942,
+      "clip_retained_energy_kwh": 6.515561266409414,
+      "clip_local_cost_delta": 6.932557187459614,
+      "terminal_repair_kwh": 0.0,
+      "execution_deviation_kwh": 6.189783203088942,
+      "terminal_repair_local_cost_delta": 0.0,
+      "margin_relaxation_kwh": 0.0
+    }
+  ],
+  "points": [
+    {
+      "timestamp": "2018-12-01 00:00:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 15.01552501924467,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 59.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 00:15:00",
+      "actual_kw": 15.4,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 55.4,
+          "soc_kwh": 69.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 00:30:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 78.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 00:45:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 88.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 01:00:00",
+      "actual_kw": 16.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 24.54105263157895,
+          "soc_kwh": 90.0,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 01:15:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 23.98105263157889,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 8.421052631578888,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 01:30:00",
+      "actual_kw": 15.68,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 01:45:00",
+      "actual_kw": 15.68,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 02:00:00",
+      "actual_kw": 15.84,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 02:15:00",
+      "actual_kw": 16.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 24.54105263157889,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 8.421052631578888,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 02:30:00",
+      "actual_kw": 16.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 16.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 16.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 16.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 16.56,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 16.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 16.56,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 16.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 16.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 02:45:00",
+      "actual_kw": 20.32,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 03:00:00",
+      "actual_kw": 18.88,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 03:15:00",
+      "actual_kw": 15.84,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 03:30:00",
+      "actual_kw": 15.68,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 03:45:00",
+      "actual_kw": 13.4,
+      "forecast_kw": 18.846308869769015,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 04:00:00",
+      "actual_kw": 13.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 04:15:00",
+      "actual_kw": 13.4,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 04:30:00",
+      "actual_kw": 12.96,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 12.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 12.96,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 12.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 12.96,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 12.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 12.96,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 12.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 12.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 04:45:00",
+      "actual_kw": 13.24,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 05:00:00",
+      "actual_kw": 13.24,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 05:15:00",
+      "actual_kw": 13.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 05:30:00",
+      "actual_kw": 13.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 53.12,
+          "soc_kwh": 59.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 59.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 59.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.12,
+          "soc_kwh": 59.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 05:45:00",
+      "actual_kw": 12.8,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 12.8,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 12.8,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 52.8,
+          "soc_kwh": 69.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 52.8,
+          "soc_kwh": 61.499999999999986,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 52.8,
+          "soc_kwh": 69.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 12.8,
+          "soc_kwh": 51.999999999999986,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 21.22105263157895,
+          "soc_kwh": 61.5,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 21.22105263157895,
+          "soc_kwh": 61.5,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 06:00:00",
+      "actual_kw": 13.84,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 22.26105263157895,
+          "soc_kwh": 71.0,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 53.84,
+          "soc_kwh": 70.99999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 22.26105263157895,
+          "soc_kwh": 71.0,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 53.84,
+          "soc_kwh": 61.499999999999986,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.84,
+          "soc_kwh": 71.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.84,
+          "soc_kwh": 71.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 06:15:00",
+      "actual_kw": 16.12,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 16.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 16.12,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 80.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 80.49999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 80.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 70.99999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 80.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 56.120000000000005,
+          "soc_kwh": 80.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 06:30:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 55.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 80.49999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 55.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 06:45:00",
+      "actual_kw": 15.56,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 55.56,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.56,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 07:00:00",
+      "actual_kw": 17.84,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 17.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 07:15:00",
+      "actual_kw": 14.68,
+      "forecast_kw": 12.990782604498314,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 14.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 14.68,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 14.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 14.68,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 14.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 14.68,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 07:30:00",
+      "actual_kw": 13.84,
+      "forecast_kw": 16.90698792252353,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 07:45:00",
+      "actual_kw": 13.84,
+      "forecast_kw": 16.90698792252353,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 08:00:00",
+      "actual_kw": 14.84,
+      "forecast_kw": 101.17461994396874,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 14.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 14.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 08:15:00",
+      "actual_kw": 18.88,
+      "forecast_kw": 143.22703728133015,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 08:30:00",
+      "actual_kw": 17.84,
+      "forecast_kw": 138.38636933280915,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 17.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 17.84,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 08:45:00",
+      "actual_kw": 20.88,
+      "forecast_kw": 138.38636933280915,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 20.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 20.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 20.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 20.88,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 20.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 20.88,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 20.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 20.88,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 09:00:00",
+      "actual_kw": 114.32,
+      "forecast_kw": 134.10724322564045,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 114.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 09:15:00",
+      "actual_kw": 122.24,
+      "forecast_kw": 139.11832353561215,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 122.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 122.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 122.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 122.24,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 122.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 122.24,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 122.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 122.24,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 09:30:00",
+      "actual_kw": 112.32,
+      "forecast_kw": 137.79762190483743,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 112.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 112.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 112.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 112.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 112.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 112.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 112.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 112.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 09:45:00",
+      "actual_kw": 114.32,
+      "forecast_kw": 141.1533162872809,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 114.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 89.99999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 114.32,
+          "soc_kwh": 90.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 10:00:00",
+      "actual_kw": 114.92,
+      "forecast_kw": 131.7795375062344,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 114.92,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.47368421052632,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.47368421052632,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 1.7763568394002505e-15
+        },
+        "N1": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.4736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 1.7763568394002505e-15
+        },
+        "L1": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.47368421052632,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 1.7763568394002505e-15
+        },
+        "O1": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.4736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.47368421052632,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 1.7763568394002505e-15
+        },
+        "R2": {
+          "grid_kw": 74.92,
+          "soc_kwh": 79.47368421052632,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 1.7763568394002505e-15
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 10:15:00",
+      "actual_kw": 118.24,
+      "forecast_kw": 134.90543273131516,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 118.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105262,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105262,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 78.24,
+          "soc_kwh": 68.94736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 10:30:00",
+      "actual_kw": 120.24,
+      "forecast_kw": 138.99308131656161,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 120.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.421052631578945,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.421052631578945,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.42105263157893,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.421052631578945,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.42105263157893,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.421052631578945,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 80.24,
+          "soc_kwh": 58.421052631578945,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 10:45:00",
+      "actual_kw": 116.8,
+      "forecast_kw": 132.92594674905857,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 116.8,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 84.80000000000001,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 31.99999999999999,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.894736842105246,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.894736842105246,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 76.8,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 11:00:00",
+      "actual_kw": 111.76,
+      "forecast_kw": 134.5844227387276,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 111.76,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.894736842105246,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 71.76,
+          "soc_kwh": 37.36842105263156,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 11:15:00",
+      "actual_kw": 111.76,
+      "forecast_kw": 135.31637694153056,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 111.76,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 71.76,
+          "soc_kwh": 37.368421052631575,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 71.76,
+          "soc_kwh": 37.36842105263156,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 71.76,
+          "soc_kwh": 37.368421052631575,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 77.72000000000001,
+          "soc_kwh": 28.410526315789458,
+          "charge_kw": 0.0,
+          "discharge_kw": 34.03999999999999,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 111.76,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 11:30:00",
+      "actual_kw": 102.52,
+      "forecast_kw": 135.1361035055717,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 102.52,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 102.52,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 62.519999999999996,
+          "soc_kwh": 26.84210526315789,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 62.519999999999996,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 62.519999999999996,
+          "soc_kwh": 26.84210526315789,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 62.519999999999996,
+          "soc_kwh": 17.884210526315773,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 102.52,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 102.52,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 11:45:00",
+      "actual_kw": 14.56,
+      "forecast_kw": 117.97083319868928,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 23.01052631578947,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.56,
+          "clip_kwh": 1.573047234051788
+        },
+        "N1": {
+          "grid_kw": 14.56,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 23.01052631578947,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.56,
+          "clip_kwh": 1.573047234051788
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 14.052631578947352,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.56,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 14.56,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 14.56,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 12:00:00",
+      "actual_kw": 15.4,
+      "forecast_kw": 13.199780556825676,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 15.4,
+          "soc_kwh": 23.01052631578947,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 23.01052631578947,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 6.217248937900877e-14,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.399999999999938,
+          "clip_kwh": 1.509903313490213e-14
+        },
+        "R1": {
+          "grid_kw": 15.4,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 15.4,
+          "soc_kwh": 47.89473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 12:15:00",
+      "actual_kw": 14.84,
+      "forecast_kw": 15.89916998561169,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 19.105263157894733,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.84,
+          "clip_kwh": 0.5208976513551358
+        },
+        "N1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 19.105263157894733,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.84,
+          "clip_kwh": 0.5208976513551358
+        },
+        "O1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 3.7904681903207447,
+          "soc_kwh": 44.9869653132423,
+          "charge_kw": 0.0,
+          "discharge_kw": 11.049531809679255,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 3.7904681903207447,
+          "soc_kwh": 44.9869653132423,
+          "charge_kw": 0.0,
+          "discharge_kw": 11.049531809679255,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 12:30:00",
+      "actual_kw": 14.96,
+      "forecast_kw": 15.22452297157204,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.96,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.26506202123380973,
+          "soc_kwh": 15.238174216114157,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.694937978766191,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 14.96,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.26506202123380973,
+          "soc_kwh": 15.238174216114157,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.694937978766191,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 14.96,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 5.408290313801974,
+          "soc_kwh": 42.47335750108493,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.551709686198027,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 5.408290313801974,
+          "soc_kwh": 42.47335750108493,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.551709686198027,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 12:45:00",
+      "actual_kw": 14.84,
+      "forecast_kw": 15.22452297157204,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 14.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 11.33291105821942,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.84,
+          "clip_kwh": 0.06306537144650459
+        },
+        "N1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 11.33291105821942,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.84,
+          "clip_kwh": 0.06306537144650459
+        },
+        "O1": {
+          "grid_kw": 14.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 5.030030034239086,
+          "soc_kwh": 39.89178645746363,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.809969965760914,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 5.030030034239086,
+          "soc_kwh": 39.89178645746363,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.809969965760914,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 13:00:00",
+      "actual_kw": 45.2,
+      "forecast_kw": 92.07079596923336,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 45.2,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 45.2,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 40.13493797876621,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 5.0650620212337945,
+          "clip_kwh": 6.661338147750939e-16
+        },
+        "N1": {
+          "grid_kw": 45.2,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 40.13493797876621,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 5.0650620212337945,
+          "clip_kwh": 6.661338147750939e-16
+        },
+        "O1": {
+          "grid_kw": 45.2,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 11.611211461638192,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 33.58878853836181,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 11.611211461638192,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 33.58878853836181,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 13:15:00",
+      "actual_kw": 109.16,
+      "forecast_kw": 128.15224490693615,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 109.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 109.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 109.16,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 109.16,
+          "soc_kwh": 26.842105263157876,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 109.16,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 109.16,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 109.16,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 109.16,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 13:30:00",
+      "actual_kw": 107.44,
+      "forecast_kw": 127.79151823976552,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 107.44,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 107.44,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 107.44,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 67.44,
+          "soc_kwh": 16.31578947368419,
+          "charge_kw": 0.0,
+          "discharge_kw": 40.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 107.44,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 107.44,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 107.44,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 107.44,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 13:45:00",
+      "actual_kw": 101.24,
+      "forecast_kw": 118.77846612588964,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 101.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 101.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 101.24,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 77.24000000000007,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 23.999999999999925,
+          "clip_kwh": 8.881784197001252e-16
+        },
+        "L1": {
+          "grid_kw": 101.24,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 101.24,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 101.24,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 101.24,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 14:00:00",
+      "actual_kw": 104.84,
+      "forecast_kw": 128.4091773849996,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 104.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 104.84,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 104.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 104.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 104.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 104.84,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 104.84,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 104.84,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 14:15:00",
+      "actual_kw": 105.12,
+      "forecast_kw": 125.2499617644443,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 105.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 105.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 105.12,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 105.12,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 105.12,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 105.12,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 105.12,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 105.12,
+          "soc_kwh": 31.052631578947363,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 14:30:00",
+      "actual_kw": 74.72,
+      "forecast_kw": 129.33260910972496,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 74.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 74.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 74.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 74.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 74.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 74.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 34.72000000000002,
+          "soc_kwh": 20.526315789473685,
+          "charge_kw": 0.0,
+          "discharge_kw": 39.99999999999998,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 34.72000000000002,
+          "soc_kwh": 20.526315789473685,
+          "charge_kw": 0.0,
+          "discharge_kw": 39.99999999999998,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 14:45:00",
+      "actual_kw": 20.72,
+      "forecast_kw": 119.16507781474124,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 20.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 20.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 20.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 20.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 20.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 20.72,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 15.073684210526316,
+          "charge_kw": 0.0,
+          "discharge_kw": 20.72,
+          "clip_kwh": 4.820000000000002
+        },
+        "R2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 15.073684210526316,
+          "charge_kw": 0.0,
+          "discharge_kw": 20.72,
+          "clip_kwh": 4.820000000000002
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 15:00:00",
+      "actual_kw": 20.32,
+      "forecast_kw": 128.4091773849996,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 60.32,
+          "soc_kwh": 19.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 3.552713678800501e-15
+        },
+        "N1": {
+          "grid_kw": 60.32,
+          "soc_kwh": 19.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 3.552713678800501e-15
+        },
+        "L1": {
+          "grid_kw": 60.32,
+          "soc_kwh": 19.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 3.552713678800501e-15
+        },
+        "O1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 20.32,
+          "soc_kwh": 15.073684210526316,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 20.32,
+          "soc_kwh": 15.073684210526316,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 15:15:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 123.25272639998767,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 20.528010605362773,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 1.5280106053627738,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 20.528010605362773,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 1.5280106053627738,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 15:30:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 118.71666781475544,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.0,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 15:45:00",
+      "actual_kw": 18.88,
+      "forecast_kw": 121.13232090024528,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 16:00:00",
+      "actual_kw": 18.56,
+      "forecast_kw": 127.06800453326238,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 18.560000000000237,
+          "soc_kwh": 10.000000000000057,
+          "charge_kw": 2.3934071099287584e-13,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.56,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 16:15:00",
+      "actual_kw": 18.88,
+      "forecast_kw": 123.75395320682128,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 41.04066481994433,
+          "soc_kwh": 15.263157894736835,
+          "charge_kw": 22.160664819944333,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.88,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 16:30:00",
+      "actual_kw": 18.72,
+      "forecast_kw": 120.96782794969018,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.72,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.72,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.72,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 58.72,
+          "soc_kwh": 24.763157894736835,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.72,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.72,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 16:45:00",
+      "actual_kw": 18.56,
+      "forecast_kw": 106.1774257872899,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 58.56,
+          "soc_kwh": 34.263157894736835,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.56,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.56,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 17:00:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 67.99952697437952,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 24.45224432483235,
+          "soc_kwh": 20.75690802714768,
+          "charge_kw": 5.292244324832348,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 19.5,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 59.16,
+          "soc_kwh": 43.763157894736835,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 15.436586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 17:15:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 68.28457297978905,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 59.0,
+          "soc_kwh": 29.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 59.0,
+          "soc_kwh": 30.25690802714768,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 59.0,
+          "soc_kwh": 29.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 59.0,
+          "soc_kwh": 53.263157894736835,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 59.0,
+          "soc_kwh": 24.936586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 59.0,
+          "soc_kwh": 24.936586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 17:30:00",
+      "actual_kw": 18.88,
+      "forecast_kw": 46.19541512902313,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.88,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 38.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 39.75690802714768,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 38.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 62.763157894736835,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 34.436586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 58.879999999999995,
+          "soc_kwh": 34.436586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 17:45:00",
+      "actual_kw": 18.72,
+      "forecast_kw": 29.577855605739394,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.72,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 58.72,
+          "soc_kwh": 48.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 58.72,
+          "soc_kwh": 49.25690802714768,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 58.72,
+          "soc_kwh": 48.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 58.72,
+          "soc_kwh": 72.26315789473684,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 58.72,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 58.72,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 18:00:00",
+      "actual_kw": 23.04,
+      "forecast_kw": 26.109048806063498,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 23.04,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 23.04,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 49.25690802714768,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 66.19999999999999,
+          "charge_kw": 0.0,
+          "discharge_kw": 23.04,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 23.04,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 18:15:00",
+      "actual_kw": 21.6,
+      "forecast_kw": 36.80020864528671,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 21.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 21.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 21.6,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 21.6,
+          "soc_kwh": 49.25690802714768,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 21.6,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 60.5157894736842,
+          "charge_kw": 0.0,
+          "discharge_kw": 21.6,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 21.6,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 21.6,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 18:30:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 48.83769383465231,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 49.25690802714768,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 3.552713678800501e-15,
+          "soc_kwh": 55.47368421052631,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.159999999999997,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 43.936586729299975,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 18:45:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 50.73855321808735,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 2.039999999999999,
+          "soc_kwh": 44.75164486925294,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.12,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 48.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 3.552713678800501e-15,
+          "soc_kwh": 50.431578947368415,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.159999999999997,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.702024728949564,
+          "soc_kwh": 43.81606692112881,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.4579752710504352,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.702024728949564,
+          "soc_kwh": 43.81606692112881,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.4579752710504352,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 19:00:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 42.16144824869002,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 42.95789473684211,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.16,
+          "clip_kwh": 1.8030429099115866
+        },
+        "N1": {
+          "grid_kw": 2.379999999999999,
+          "soc_kwh": 40.33585539556873,
+          "charge_kw": 0.0,
+          "discharge_kw": 16.78,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 42.95789473684211,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.16,
+          "clip_kwh": 1.8030429099115866
+        },
+        "O1": {
+          "grid_kw": 3.552713678800501e-15,
+          "soc_kwh": 45.38947368421052,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.159999999999997,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 2.018088434229874,
+          "soc_kwh": 39.305037561715615,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.141911565770126,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 2.018088434229874,
+          "soc_kwh": 39.305037561715615,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.141911565770126,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 19:15:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 43.92560530204235,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 14.001700000103062,
+          "soc_kwh": 41.60044736844817,
+          "charge_kw": 0.0,
+          "discharge_kw": 5.158299999896938,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 0.360000000000003,
+          "soc_kwh": 35.3884869745161,
+          "charge_kw": 0.0,
+          "discharge_kw": 18.799999999999997,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 14.001700000103062,
+          "soc_kwh": 41.60044736844817,
+          "charge_kw": 0.0,
+          "discharge_kw": 5.158299999896938,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 3.552713678800501e-15,
+          "soc_kwh": 40.34736842105263,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.159999999999997,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 5.74219761753616,
+          "soc_kwh": 35.77403693475144,
+          "charge_kw": 0.0,
+          "discharge_kw": 13.41780238246384,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 5.74219761753616,
+          "soc_kwh": 35.77403693475144,
+          "charge_kw": 0.0,
+          "discharge_kw": 13.41780238246384,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 19:30:00",
+      "actual_kw": 19.6,
+      "forecast_kw": 39.98149175842195,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 36.44255263160606,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.6,
+          "clip_kwh": 1.9996722768501947
+        },
+        "N1": {
+          "grid_kw": 2.460000000000001,
+          "soc_kwh": 30.877960658726625,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.14,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 36.44255263160606,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.6,
+          "clip_kwh": 1.9996722768501947
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 35.189473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.6,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 1.6608520801894926,
+          "soc_kwh": 31.053208534801307,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.93914791981051,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 1.6608520801894926,
+          "soc_kwh": 31.053208534801307,
+          "charge_kw": 0.0,
+          "discharge_kw": 17.93914791981051,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 19:45:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 42.16144824869002,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 10.075653905119282,
+          "soc_kwh": 34.094040501374295,
+          "charge_kw": 0.0,
+          "discharge_kw": 8.924346094880718,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 4.32,
+          "soc_kwh": 27.014802763989785,
+          "charge_kw": 0.0,
+          "discharge_kw": 14.68,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 10.075653905119282,
+          "soc_kwh": 34.094040501374295,
+          "charge_kw": 0.0,
+          "discharge_kw": 8.924346094880718,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 30.189473684210526,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 26.053208534801307,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.37247809846261415
+        },
+        "R2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 26.053208534801307,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.37247809846261415
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 20:00:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 35.76519007691727,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 29.0519352382164,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.16,
+          "clip_kwh": 1.256116488143065
+        },
+        "N1": {
+          "grid_kw": 3.66,
+          "soc_kwh": 22.93585539556873,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.5,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 29.0519352382164,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.16,
+          "clip_kwh": 1.256116488143065
+        },
+        "O1": {
+          "grid_kw": 3.552713678800501e-15,
+          "soc_kwh": 25.147368421052633,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.159999999999997,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 3.440097130828036,
+          "soc_kwh": 21.91639199028237,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.719902869171964,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 3.440097130828036,
+          "soc_kwh": 21.91639199028237,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.719902869171964,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 20:15:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 43.67062645154371,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 24.0519352382164,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 4.092007853271269
+        },
+        "N1": {
+          "grid_kw": 3.379999999999999,
+          "soc_kwh": 18.825329079779255,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.620000000000001,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 24.0519352382164,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 4.092007853271269
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 20.147368421052633,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 16.91639199028237,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.9973051046263244
+        },
+        "R2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 16.91639199028237,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.0,
+          "clip_kwh": 0.9973051046263244
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 20:30:00",
+      "actual_kw": 19.28,
+      "forecast_kw": 32.52131645361493,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.28,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.28,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 0.0,
+          "soc_kwh": 18.978251027690085,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.28,
+          "clip_kwh": 0.22650080696076813
+        },
+        "N1": {
+          "grid_kw": 3.66,
+          "soc_kwh": 14.71480276398978,
+          "charge_kw": 0.0,
+          "discharge_kw": 15.620000000000001,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 18.978251027690085,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.28,
+          "clip_kwh": 0.22650080696076813
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 15.073684210526316,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.28,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 6.159097901902003,
+          "soc_kwh": 13.463523017098687,
+          "charge_kw": 0.0,
+          "discharge_kw": 13.120902098097998,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 6.159097901902003,
+          "soc_kwh": 13.463523017098687,
+          "charge_kw": 0.0,
+          "discharge_kw": 13.120902098097998,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 20:45:00",
+      "actual_kw": 19.28,
+      "forecast_kw": 16.37059758082567,
+      "pv_kw": 0.0,
+      "price": 1.15,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.28,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.28,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 9.530060645981795,
+          "soc_kwh": 16.41247751347477,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.749939354018206,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 2.960000000000001,
+          "soc_kwh": 10.420065921884518,
+          "charge_kw": 0.0,
+          "discharge_kw": 16.32,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 9.530060645981795,
+          "soc_kwh": 16.41247751347477,
+          "charge_kw": 0.0,
+          "discharge_kw": 9.749939354018206,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 0.0,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 19.28,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 12.942539419888167,
+          "soc_kwh": 11.79577023285873,
+          "charge_kw": 0.0,
+          "discharge_kw": 6.337460580111834,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 12.942539419888167,
+          "soc_kwh": 11.79577023285873,
+          "charge_kw": 0.0,
+          "discharge_kw": 6.337460580111834,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 21:00:00",
+      "actual_kw": 19.0,
+      "forecast_kw": 15.522845158151123,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 2.232585448795877,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 16.767414551204123,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 10.420065921884518,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 2.232585448795877,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 16.767414551204123,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.0,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.859914809015873,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.8599148090158711,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.859914809015873,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.8599148090158711,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 21:15:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 15.517531022198684,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 10.420065921884518,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 21:30:00",
+      "actual_kw": 19.16,
+      "forecast_kw": 15.517531022198684,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 10.420065921884518,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.16,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 21:45:00",
+      "actual_kw": 19.6,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 19.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 19.6,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 19.6,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 26.25235401311782,
+          "soc_kwh": 12.0,
+          "charge_kw": 6.652354013117819,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 19.6,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 19.6,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 19.6,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 19.6,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 22:00:00",
+      "actual_kw": 23.04,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 23.04,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 23.04,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 23.04,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 23.04,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 22:15:00",
+      "actual_kw": 18.44,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 18.44,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 18.44,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 18.44,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 18.44,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 18.44,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 18.44,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 18.44,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 18.44,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 22:30:00",
+      "actual_kw": 13.68,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 10.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 22:45:00",
+      "actual_kw": 13.68,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.7,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 22.101052631578945,
+          "soc_kwh": 12.0,
+          "charge_kw": 8.421052631578947,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 13.68,
+          "soc_kwh": 12.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 23:00:00",
+      "actual_kw": 13.12,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.12,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.12,
+          "soc_kwh": 21.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 23:15:00",
+      "actual_kw": 13.52,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.52,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.52,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.519999999999996,
+          "soc_kwh": 31.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 23:30:00",
+      "actual_kw": 13.24,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.24,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.24,
+          "soc_kwh": 40.5,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2018-12-01 23:45:00",
+      "actual_kw": 13.4,
+      "forecast_kw": 13.492788607452331,
+      "pv_kw": 0.0,
+      "price": 0.35,
+      "strategies": {
+        "B0": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B1": {
+          "grid_kw": 13.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 0.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "B2": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "N1": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "L1": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "O1": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R1": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        },
+        "R2": {
+          "grid_kw": 53.4,
+          "soc_kwh": 50.0,
+          "charge_kw": 40.0,
+          "discharge_kw": 0.0,
+          "clip_kwh": 0.0
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "公开韩国钢厂历史负荷与人民币示例电价，不是客户真实账单或收益。",
+    "15分钟数据与源时区未知的工程时间推断均保留；此处只有单日，不认证完整月需量。",
+    "完美预知 O1 是事后诊断参照，不可部署。",
+    "原报告保留BDG2外部预测负结果、N1压力案例不可行、R2未优于R1与云端助手验收失败；见README及冻结报告。",
+    "未连接储能设备，不构成设备安全认证或真实投资回报验证。"
+  ]
+}

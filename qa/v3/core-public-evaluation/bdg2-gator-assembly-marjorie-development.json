@@ -1,0 +1,212 @@
+{
+  "models": [
+    {
+      "name": "HistGradientBoosting",
+      "mae_kw": 10.437504971919186,
+      "wape_pct": 17.639367791702927,
+      "rmse_kw": 14.73336593127349,
+      "n": 2208
+    },
+    {
+      "name": "Daily naive",
+      "mae_kw": 9.978711956521739,
+      "wape_pct": 16.86400828187441,
+      "rmse_kw": 14.811047051657525,
+      "n": 2208
+    },
+    {
+      "name": "Weekly naive",
+      "mae_kw": 17.265856521739135,
+      "wape_pct": 29.179271698083685,
+      "rmse_kw": 24.187203319317426,
+      "n": 2208
+    }
+  ],
+  "validation": [
+    {
+      "name": "HistGradientBoosting",
+      "mae_kw": 9.256501806230725,
+      "wape_pct": 16.46531357755844,
+      "rmse_kw": 13.168037272729984,
+      "n": 6311
+    },
+    {
+      "name": "Daily naive",
+      "mae_kw": 9.249348756140073,
+      "wape_pct": 16.452589849389412,
+      "rmse_kw": 14.09548742637522,
+      "n": 6311
+    },
+    {
+      "name": "Weekly naive",
+      "mae_kw": 13.185367453652354,
+      "wape_pct": 23.453915345598954,
+      "rmse_kw": 19.027427508363903,
+      "n": 6311
+    }
+  ],
+  "rolling_validation": [
+    {
+      "start": "2017-01-01 00:00:00",
+      "end": "2017-03-31 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8135,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 9.261153776733648,
+          "wape_pct": 18.64745383120677,
+          "rmse_kw": 13.332058607469722,
+          "n": 1943
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 8.56491487390633,
+          "wape_pct": 17.245567726196917,
+          "rmse_kw": 14.652389343417202,
+          "n": 1943
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 10.57275409161091,
+          "wape_pct": 21.288378159459988,
+          "rmse_kw": 15.478939169370708,
+          "n": 1943
+        }
+      ],
+      "failure": null
+    },
+    {
+      "start": "2017-04-01 00:00:00",
+      "end": "2017-06-30 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8135,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 8.045069505986609,
+          "wape_pct": 13.613917990240834,
+          "rmse_kw": 11.173266143214429,
+          "n": 2160
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 9.119451111111111,
+          "wape_pct": 15.43199340295221,
+          "rmse_kw": 12.772525342033536,
+          "n": 2160
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 11.364343333333332,
+          "wape_pct": 19.230814356272845,
+          "rmse_kw": 15.628638343882965,
+          "n": 2160
+        }
+      ],
+      "failure": null
+    },
+    {
+      "start": "2017-07-01 00:00:00",
+      "end": "2017-09-30 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8135,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 10.437504971919186,
+          "wape_pct": 17.639367791702927,
+          "rmse_kw": 14.73336593127349,
+          "n": 2208
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 9.978711956521739,
+          "wape_pct": 16.86400828187441,
+          "rmse_kw": 14.811047051657525,
+          "n": 2208
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 17.265856521739135,
+          "wape_pct": 29.179271698083685,
+          "rmse_kw": 24.187203319317426,
+          "n": 2208
+        }
+      ],
+      "failure": null
+    }
+  ],
+  "selected_model": "Daily naive",
+  "selection_reason": "学习模型未达到冻结门槛或训练失败；按开发滚动验证MAE回退到Daily naive。",
+  "selection_policy": {
+    "minimum_mae_improvement_pct": 2.0,
+    "minimum_fold_wins": 2,
+    "observed_mae_improvement_pct": -0.07733571605140079,
+    "observed_fold_wins": 1,
+    "baseline": "Daily naive"
+  },
+  "improvement_vs_weekly_pct": 39.548293136934696,
+  "train_end": "2016-12-31 23:00:00",
+  "train_rows": 8135,
+  "validation_period": [
+    "2017-01-01 00:00:00",
+    "2017-09-30 23:00:00"
+  ],
+  "holdout_period": [
+    "2017-07-01 00:00:00",
+    "2017-09-30 23:00:00"
+  ],
+  "features": [
+    "hour",
+    "weekday",
+    "month",
+    "sin_hour",
+    "cos_hour",
+    "lag_24h",
+    "lag_48h",
+    "lag_168h",
+    "lag_336h",
+    "previous_day_mean",
+    "previous_day_max",
+    "previous_week_mean"
+  ],
+  "training_seconds": 0.7246480000030715,
+  "hgb_available": true,
+  "fallback_error": null,
+  "risk_calibration": {
+    "quantile": 0.75,
+    "positive_overprediction_q75_kw": 5.791699999999999,
+    "cap_fraction": 0.35,
+    "sample_count": 6311,
+    "period_end": "2017-09-30 23:00:00",
+    "method": "Positive selected-forecast residual q75 on development folds only"
+  },
+  "interval_method": "Development absolute residual q90; empirical marginal interval, no guaranteed coverage",
+  "interval_q90_kw": 19.333399999999997,
+  "scored_intervals": 2208,
+  "evaluation_intervals": 2208,
+  "observed_evaluation_pct": 100.0,
+  "interval_coverage_pct": 90.21739130434783,
+  "development_calibration_by_model": [
+    {
+      "model": "HistGradientBoosting",
+      "mean_scale_kw": 44.17757781460874,
+      "absolute_q90_fraction": 0.4565963380256916,
+      "positive_q75_fraction": 0.09045212887839825
+    },
+    {
+      "model": "Daily naive",
+      "mean_scale_kw": 44.17757781460874,
+      "absolute_q90_fraction": 0.43762924443555135,
+      "positive_q75_fraction": 0.13110044249833874
+    },
+    {
+      "model": "Weekly naive",
+      "mean_scale_kw": 44.17757781460874,
+      "absolute_q90_fraction": 0.7120874786756032,
+      "positive_q75_fraction": 0.21221172512766995
+    }
+  ],
+  "dataset_id": "bdg2-gator-assembly-marjorie"
+}

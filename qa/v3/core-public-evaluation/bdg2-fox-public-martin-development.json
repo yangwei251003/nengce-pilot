@@ -1,0 +1,212 @@
+{
+  "models": [
+    {
+      "name": "HistGradientBoosting",
+      "mae_kw": 5.668681606710867,
+      "wape_pct": 3.037650341762865,
+      "rmse_kw": 10.783317449650196,
+      "n": 2208
+    },
+    {
+      "name": "Daily naive",
+      "mae_kw": 8.959877717391304,
+      "wape_pct": 4.801288465057971,
+      "rmse_kw": 16.008541661067397,
+      "n": 2208
+    },
+    {
+      "name": "Weekly naive",
+      "mae_kw": 7.9019836956521745,
+      "wape_pct": 4.234399660987473,
+      "rmse_kw": 14.999295031743172,
+      "n": 2208
+    }
+  ],
+  "validation": [
+    {
+      "name": "HistGradientBoosting",
+      "mae_kw": 6.121668387764161,
+      "wape_pct": 3.3016143743415447,
+      "rmse_kw": 10.722683449208287,
+      "n": 6552
+    },
+    {
+      "name": "Daily naive",
+      "mae_kw": 8.890595238095237,
+      "wape_pct": 4.794986460426116,
+      "rmse_kw": 15.386778598755837,
+      "n": 6552
+    },
+    {
+      "name": "Weekly naive",
+      "mae_kw": 8.977191697191698,
+      "wape_pct": 4.841690740372318,
+      "rmse_kw": 15.67770809769659,
+      "n": 6552
+    }
+  ],
+  "rolling_validation": [
+    {
+      "start": "2017-01-01 00:00:00",
+      "end": "2017-03-31 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8445,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 5.939823681583185,
+          "wape_pct": 3.2521461032743892,
+          "rmse_kw": 9.468429371435555,
+          "n": 2160
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 8.256453703703704,
+          "wape_pct": 4.520537170593008,
+          "rmse_kw": 13.432834471713125,
+          "n": 2160
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 9.008805555555554,
+          "wape_pct": 4.932461543176255,
+          "rmse_kw": 14.46481239716524,
+          "n": 2160
+        }
+      ],
+      "failure": null
+    },
+    {
+      "start": "2017-04-01 00:00:00",
+      "end": "2017-06-30 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8445,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 6.7594794582387845,
+          "wape_pct": 3.6158099864526263,
+          "rmse_kw": 11.777270783713194,
+          "n": 2184
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 9.44772435897436,
+          "wape_pct": 5.053817575374671,
+          "rmse_kw": 16.513966700936326,
+          "n": 2184
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 10.032948717948717,
+          "wape_pct": 5.366868320564178,
+          "rmse_kw": 17.406576025152503,
+          "n": 2184
+        }
+      ],
+      "failure": null
+    },
+    {
+      "start": "2017-07-01 00:00:00",
+      "end": "2017-09-30 23:00:00",
+      "train_end": "2016-12-31 23:00:00",
+      "train_rows": 8445,
+      "models": [
+        {
+          "name": "HistGradientBoosting",
+          "mae_kw": 5.668681606710867,
+          "wape_pct": 3.037650341762865,
+          "rmse_kw": 10.783317449650196,
+          "n": 2208
+        },
+        {
+          "name": "Daily naive",
+          "mae_kw": 8.959877717391304,
+          "wape_pct": 4.801288465057971,
+          "rmse_kw": 16.008541661067397,
+          "n": 2208
+        },
+        {
+          "name": "Weekly naive",
+          "mae_kw": 7.9019836956521745,
+          "wape_pct": 4.234399660987473,
+          "rmse_kw": 14.999295031743172,
+          "n": 2208
+        }
+      ],
+      "failure": null
+    }
+  ],
+  "selected_model": "HistGradientBoosting",
+  "selection_reason": "HGB在开发滚动验证MAE改善31.14%，且胜出3/3窗，达到冻结门槛。",
+  "selection_policy": {
+    "minimum_mae_improvement_pct": 2.0,
+    "minimum_fold_wins": 2,
+    "observed_mae_improvement_pct": 31.14444844442501,
+    "observed_fold_wins": 3,
+    "baseline": "Daily naive"
+  },
+  "improvement_vs_weekly_pct": 28.262549948946546,
+  "train_end": "2016-12-31 23:00:00",
+  "train_rows": 8445,
+  "validation_period": [
+    "2017-01-01 00:00:00",
+    "2017-09-30 23:00:00"
+  ],
+  "holdout_period": [
+    "2017-07-01 00:00:00",
+    "2017-09-30 23:00:00"
+  ],
+  "features": [
+    "hour",
+    "weekday",
+    "month",
+    "sin_hour",
+    "cos_hour",
+    "lag_24h",
+    "lag_48h",
+    "lag_168h",
+    "lag_336h",
+    "previous_day_mean",
+    "previous_day_max",
+    "previous_week_mean"
+  ],
+  "training_seconds": 0.6919687000045087,
+  "hgb_available": true,
+  "fallback_error": null,
+  "risk_calibration": {
+    "quantile": 0.75,
+    "positive_overprediction_q75_kw": 3.172639570522172,
+    "cap_fraction": 0.35,
+    "sample_count": 6552,
+    "period_end": "2017-09-30 23:00:00",
+    "method": "Positive selected-forecast residual q75 on development folds only"
+  },
+  "interval_method": "Development absolute residual q90; empirical marginal interval, no guaranteed coverage",
+  "interval_q90_kw": 13.020165412280326,
+  "scored_intervals": 2208,
+  "evaluation_intervals": 2208,
+  "observed_evaluation_pct": 100.0,
+  "interval_coverage_pct": 92.07427536231883,
+  "development_calibration_by_model": [
+    {
+      "model": "HistGradientBoosting",
+      "mean_scale_kw": 185.12021068215464,
+      "absolute_q90_fraction": 0.07033357062582175,
+      "positive_q75_fraction": 0.01713826685282619
+    },
+    {
+      "model": "Daily naive",
+      "mean_scale_kw": 185.12021068215464,
+      "absolute_q90_fraction": 0.12743071063430922,
+      "positive_q75_fraction": 0.022850017209967214
+    },
+    {
+      "model": "Weekly naive",
+      "mean_scale_kw": 185.12021068215464,
+      "absolute_q90_fraction": 0.11651888208486852,
+      "positive_q75_fraction": 0.021337486519945773
+    }
+  ],
+  "dataset_id": "bdg2-fox-public-martin"
+}

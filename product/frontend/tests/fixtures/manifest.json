@@ -1,0 +1,7 @@
+{
+  "source": "product/outputs/v3/runs/run-a9c9ec92fa85/result.json",
+  "source_kind": "actual local V3 API run, pre-final development fixture",
+  "sha256": "43a3ab8764e67076ba4e1f3f957034c8d251f14bf7d8cef2867adc65dd6e3c0e",
+  "purpose": "DOM behavior regression only. Not final frozen evaluation evidence.",
+  "copy_date": "2026-10-04 Asia/Shanghai"
+}

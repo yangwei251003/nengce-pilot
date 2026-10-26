@@ -1,0 +1,10 @@
+{
+  "archive": "frontend-3.1.1-open.zip",
+  "sha256": "323cf542840634eae6ec5b94e6654c9392d62806eed699d678754abd7454c276",
+  "bytes": 104744,
+  "source": "product/frontend",
+  "buildCommand": "npm ci && npm run build; add licenses/javascript/THIRD_PARTY_NOTICES.md as THIRD_PARTY_NOTICES.txt",
+  "node": "24.15.0",
+  "sourceMapsIncluded": false,
+  "secretsIncluded": false
+}

@@ -1,0 +1,39 @@
+{
+  "archive": "public-evaluation-evidence.zip",
+  "archiveBytes": 7899250,
+  "sha256": "5d71d19c0eb2cc3351278974850ca24a6c7730b5ef8a2fb1ebc3319065ec96a2",
+  "downloadUrl": "https://github.com/yangwei251003/nengce-pilot/releases/download/v3.1.1-open/public-evaluation-evidence.zip",
+  "frozenEvidenceUnchanged": true,
+  "files": [
+    {
+      "path": "qa/v3/core-replay-suite/rsf-october.json",
+      "bytes": 11799814,
+      "sha256": "6551404d44786f6395922ee66eeacacfd094eb736bf0517930e53541f0677a33"
+    },
+    {
+      "path": "qa/v3/core-replay-suite/uci-forecast_bias_up_20.json",
+      "bytes": 46666361,
+      "sha256": "dd9c5d2b9acc098c22f39a46f9c1728b716b103d101bf358f06011d89574fbe6"
+    },
+    {
+      "path": "qa/v3/core-replay-suite/uci-load_up_20.json",
+      "bytes": 46845583,
+      "sha256": "5a731f165f06ae08aec5d43b0278993cff92f22b32991672bfb76b6e7ecd2a1d"
+    },
+    {
+      "path": "qa/v3/core-replay-suite/uci-none.json",
+      "bytes": 46602039,
+      "sha256": "e1ff99c72f2ea42574238f8ce723b465fb4faf4987f6b79cc5776d6df3d7c3a8"
+    },
+    {
+      "path": "qa/v3/core-replay-suite/uci-peak_price_up_20.json",
+      "bytes": 46594202,
+      "sha256": "25e3165d3a2a7e619cf310801db74738c76cdb80b334d5c61d68cb79bded801f"
+    },
+    {
+      "path": "qa/v3/core-replay-suite/uci-pv_drop_30.json",
+      "bytes": 46602388,
+      "sha256": "c97fdc46e122b6db902d3584d5aa03d980149203b094d56a0bad24b37d5c899b"
+    }
+  ]
+}

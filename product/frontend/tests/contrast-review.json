@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "scope": "Design color pair calculation. Real rendered font and viewport checks performed separately by browser acceptance.",
+  "results": [
+    {
+      "role": "auxiliary_text",
+      "foreground": "#596a4e",
+      "background": "#fffefa",
+      "contrast": 5.786,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "role": "auxiliary_text",
+      "foreground": "#596a4e",
+      "background": "#eef1e5",
+      "contrast": 5.102,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "role": "axis_labels",
+      "foreground": "#53654a",
+      "background": "#fffefa",
+      "contrast": 6.252,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "role": "axis_labels",
+      "foreground": "#53654a",
+      "background": "#eef1e5",
+      "contrast": 5.513,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "role": "load_line",
+      "foreground": "#78816e",
+      "background": "#fffefa",
+      "contrast": 4.03,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "load_line",
+      "foreground": "#78816e",
+      "background": "#eef1e5",
+      "contrast": 3.553,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "grid_line",
+      "foreground": "#246546",
+      "background": "#fffefa",
+      "contrast": 6.879,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "grid_line",
+      "foreground": "#246546",
+      "background": "#eef1e5",
+      "contrast": 6.066,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "forecast_line",
+      "foreground": "#718044",
+      "background": "#fffefa",
+      "contrast": 4.27,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "forecast_line",
+      "foreground": "#718044",
+      "background": "#eef1e5",
+      "contrast": 3.765,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "pv_line",
+      "foreground": "#a57720",
+      "background": "#fffefa",
+      "contrast": 3.957,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "pv_line",
+      "foreground": "#a57720",
+      "background": "#eef1e5",
+      "contrast": 3.489,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "charge_bars",
+      "foreground": "#748d48",
+      "background": "#fffefa",
+      "contrast": 3.686,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "role": "charge_bars",
+      "foreground": "#748d48",
+      "background": "#eef1e5",
+      "contrast": 3.25,
+      "threshold": 3,
+      "pass": true
+    }
+  ]
+}

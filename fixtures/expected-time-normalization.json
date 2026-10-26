@@ -1,0 +1,28 @@
+{
+  "status": "test_target_not_run",
+  "source_type": "synthetic_fixture",
+  "source_timezone": null,
+  "cases": [
+    {
+      "raw_date": "01/01/2018 23:45",
+      "NSM": 85500,
+      "effective_interval_end": "2018-01-01T23:45:00"
+    },
+    {
+      "raw_date": "01/01/2018 00:00",
+      "NSM": 0,
+      "effective_interval_end": "2018-01-02T00:00:00"
+    },
+    {
+      "raw_date": "02/01/2018 00:15",
+      "NSM": 900,
+      "effective_interval_end": "2018-01-02T00:15:00"
+    },
+    {
+      "raw_date": "31/12/2018 00:00",
+      "NSM": 0,
+      "effective_interval_end": "2019-01-01T00:00:00"
+    }
+  ],
+  "rule_status": "Engineering interpretation inferred from raw row order and NSM, not author-confirmed."
+}

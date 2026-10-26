@@ -1,0 +1,438 @@
+{
+  "archive": "public-research-data.zip",
+  "archiveSha256": "ebe892bafc6993e58ecb13a545684952b02448803c8155b5c80002bcfbb8a9a1",
+  "archiveBytes": 89381446,
+  "publicDatasets": 32,
+  "files": [
+    {
+      "path": "data/reference/provenance.json",
+      "bytes": 3422,
+      "sha256": "e39d5a840970a06d9691cfc738378acf58142d7994b4563cd076fcb29671f28c"
+    },
+    {
+      "path": "data/reference/README.md",
+      "bytes": 3411,
+      "sha256": "1c303973e9834696c3a645fac4f626e9bd387eb08c0e6d8a084ee043f2090e37"
+    },
+    {
+      "path": "data/reference/Steel_industry_data.csv",
+      "bytes": 2731389,
+      "sha256": "9b1cee6f9cb9cd9df2b95814ca90a9a2ff15b7f5f1fba0fae3c643e82072eacc"
+    },
+    {
+      "path": "data/reference/Steel_industry_data_normalized_v1.csv",
+      "bytes": 6404670,
+      "sha256": "23f31551e4db799a87c82f4f6507df8700af5d7e4fc73b8d2e2b98f25dfffdde"
+    },
+    {
+      "path": "data/reference/timestamp_audit.json",
+      "bytes": 3139,
+      "sha256": "35d1d50c9d0ab88fe5d6ef0c5bd28f293c8c8cf844688ffe1c6377bc75f5eb37"
+    },
+    {
+      "path": "data/reference/uci_steel_energy_851_original.zip",
+      "bytes": 481973,
+      "sha256": "d82d28b33780ff1582507fcf08ae764ff648af459d58234370c551e62aadeaef"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-education-elva/metadata.json",
+      "bytes": 7882,
+      "sha256": "52b43a696b79758f2dbe71fb155c4a4b8722f6ac93aa2a1f8be6d1addbe1800c"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-education-elva/series.csv",
+      "bytes": 1041294,
+      "sha256": "6ed279eac01315274501c2e462773fae15c4ed2b7ae244091fce736791f06311"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-education-mervin/metadata.json",
+      "bytes": 7890,
+      "sha256": "17c7eb0f1e3c83ba069d2953fb2dbb71b629897b83d67cfcc2e8ded18786c074"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-education-mervin/series.csv",
+      "bytes": 1058417,
+      "sha256": "f9926bc265a08d9df4a361453b44547f7342dde09a421b7a3a965555b898ee1a"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-office-rob/metadata.json",
+      "bytes": 7863,
+      "sha256": "941d2d79cc552ef7b349978c6c039a250a3fa62020e34f1e8d52a2eb1327704e"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-office-rob/series.csv",
+      "bytes": 1058308,
+      "sha256": "37fa253e232ef636c5631fa84ee144f6abf17660dd4451d06c3a14a926e709ab"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-services-winford/metadata.json",
+      "bytes": 7906,
+      "sha256": "66814a3064ca822fe5de5627e9ba0c7ff9ac204e0a70e96cc41954c7b20d7cc8"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-bull-services-winford/series.csv",
+      "bytes": 1041224,
+      "sha256": "b350d0e2cda1338a97ef31b755bb6c25a6b7336465b0962a29e59bf30c4e3099"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-assembly-tony/metadata.json",
+      "bytes": 8026,
+      "sha256": "6dc3747434a51742d51f53d006142937ee38fd14599f7d557255c194f0eb0c73"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-assembly-tony/series.csv",
+      "bytes": 1062255,
+      "sha256": "50a82e202e88c20aebee896ec97257e5f7c8a58239571357c324e480e2d97c18"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-education-andre/metadata.json",
+      "bytes": 8014,
+      "sha256": "89db32968ff5bb2a0438026e035428d5b619af03691d2f2de530d43282cdd1e7"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-education-andre/series.csv",
+      "bytes": 1074851,
+      "sha256": "022aa868d962d14e34c1596c3a87372b481a9a1b62f7d354d160b4b4cd1fba6c"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-education-charles/metadata.json",
+      "bytes": 7905,
+      "sha256": "6289d852bd87a3f6e89884fb6cbaa5019c0af210c49cb22b2d993eacdefcaa9d"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-education-charles/series.csv",
+      "bytes": 1052842,
+      "sha256": "99e6176b404702d9ea9f3d823c3b65d155bac7a4a3e4a678679ad54328048dc4"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-public-martin/metadata.json",
+      "bytes": 7995,
+      "sha256": "34cdc1076b721dd0ecfdf5ec7db78541e5ce0dbfe136f152921e06c8f5a45029"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-fox-public-martin/series.csv",
+      "bytes": 1074868,
+      "sha256": "31655e3a3679bbc08215c0183b9878120547ba6176f862c04a124101919d7467"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-assembly-marjorie/metadata.json",
+      "bytes": 7918,
+      "sha256": "d77026bdcbc48cf1608ec0db52940195a1f2a4038d0226b792e6810c43bbe15b"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-assembly-marjorie/series.csv",
+      "bytes": 1080948,
+      "sha256": "4339c927656825c5b534b7cb34f876ee106ef14ea5f07a066353f49f79416364"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-other-gertrude/metadata.json",
+      "bytes": 7865,
+      "sha256": "3e1a60c8f48a858c45771a5947dc5ad8329a3a8f644ee9112d07db8bc1fc8ce4"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-other-gertrude/series.csv",
+      "bytes": 1063912,
+      "sha256": "0094d10dd1da1ac0468ed6d39eb9f1f33081dfa3b3bb356c591ddacddd05f01d"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-public-marcie/metadata.json",
+      "bytes": 7871,
+      "sha256": "d7b10e47d0d899dd9f8969d954e9c86dd4e45e66289916eb0a840e97ba30140c"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-public-marcie/series.csv",
+      "bytes": 1081522,
+      "sha256": "160085f7b53f4160f7d752df12163d55b9f01a8f78a7c0a3f81ac1ab7f6013d2"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-public-marissa/metadata.json",
+      "bytes": 7875,
+      "sha256": "31c6f641ed75f4ee87ba3d08899f495aaba66aa18973ba876ad3efbc4aba67de"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-gator-public-marissa/series.csv",
+      "bytes": 1071660,
+      "sha256": "46eb7824fda01445427a3fa90ae722c19230154c111fa2b2b7f96bdd059f0dcd"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-education-jame/metadata.json",
+      "bytes": 7877,
+      "sha256": "e00d52cfd70fb0326d24b887e93071aab545745a9853e5b6a66e4c2d89ca2298"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-education-jame/series.csv",
+      "bytes": 1057760,
+      "sha256": "6cf65f180e2b9b1c87a00049e593fe247517e78d27d17f34b5e8f0dd2558ead6"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-education-kelsey/metadata.json",
+      "bytes": 7953,
+      "sha256": "1cdbacf3013a94d101baf3fa8da2cf545acdd4d263f4226698435c3e492ba74d"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-education-kelsey/series.csv",
+      "bytes": 1073794,
+      "sha256": "c0fb78266a26baaca62749d4bb1a9ba29cfe0b39967b607edaa1dab59095b785"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-office-avis/metadata.json",
+      "bytes": 7945,
+      "sha256": "98bfb1e04d766c965258f48a3e2c13a61f33ee4f45f65985a42a8108ba7bd6a3"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-office-avis/series.csv",
+      "bytes": 1078343,
+      "sha256": "db7c7b89a32998a1c6ddf3daa58bc0c6ecb40f0a85603a93389bf27e431ea777"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-public-kelly/metadata.json",
+      "bytes": 7943,
+      "sha256": "b797d5fd075521b96a10f49542221c630e80031265709aa33b87d80bdf1c8f3e"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-rat-public-kelly/series.csv",
+      "bytes": 1056948,
+      "sha256": "06aa210c0d31283f00497fe1058a654878f83f03f13db1f5e9b5bfc0c11da06b"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-cecilia/metadata.json",
+      "bytes": 8055,
+      "sha256": "09c76abe541df6d29a5dc281fae26892f75632ca80eb7a30930edc39936ff90f"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-cecilia/series.csv",
+      "bytes": 1050000,
+      "sha256": "b071e964d110c4821255c9f6db6cd84bd4ffd1bc2a39d12da22b9cecabd2a8a1"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-margarito/metadata.json",
+      "bytes": 8063,
+      "sha256": "328b03d2acefe72a746709eab22f44d38e8c0951e6619c7532c5b449f4a35bf7"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-margarito/series.csv",
+      "bytes": 1067640,
+      "sha256": "617f996b4334d0aaee7d97df823fa31f739a7f1e403023e72da9d4f89a15f956"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-megan/metadata.json",
+      "bytes": 8047,
+      "sha256": "4bef57b85a379749e3966393d7f983d1df171b6db2423454ce5ad24c9c5b55e5"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-education-megan/series.csv",
+      "bytes": 1067864,
+      "sha256": "ca2ca16306a2ba034c94643c665759960c36c41573bfd60a154b09e3d0d162e3"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-office-donald/metadata.json",
+      "bytes": 8036,
+      "sha256": "f4cab9791688f98a1ee64b4610f3db27dc41ed92ad97d04669439f8e556d50a9"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-robin-office-donald/series.csv",
+      "bytes": 1074066,
+      "sha256": "4673915ccdcef46864bf02b15b12ab48d37c84de33f3f25abaff94cab75b65f7"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-education-joaquin/metadata.json",
+      "bytes": 7997,
+      "sha256": "e3d54e6ae6d754b410f3cb646cfd39c7bd8e8bef65ef45830971ca1df3b18457"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-education-joaquin/series.csv",
+      "bytes": 1080462,
+      "sha256": "6124a6fb6e3c37f972ebec63e2de2ec7b04cdad2f148996ba9263f46cacc2aa4"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-education-katie/metadata.json",
+      "bytes": 8023,
+      "sha256": "f0ac9f8a98be6b25d758b32a6648722c5557730b7a89b8ad4296b5261015d146"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-education-katie/series.csv",
+      "bytes": 1080670,
+      "sha256": "96194a506acde11c0b82a148bd64f8364ed7c527ed04aebbb89cdad9fe608c60"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-office-bobbie/metadata.json",
+      "bytes": 8012,
+      "sha256": "7d8e668a971dd1725257524eabf793fc3c7cb2f913715d3c0b42c94ec10d0efb"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-office-bobbie/series.csv",
+      "bytes": 1080687,
+      "sha256": "d7ab30861250bf73a7679a97cc84d3b78db3a50e0805397899062d4b87fa2bee"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-science-alfreda/metadata.json",
+      "bytes": 7998,
+      "sha256": "1262ea02ca1080e7182595daf83c331b7e596f68ce1ec3b53b38f0b4d4c1eb03"
+    },
+    {
+      "path": "data/v3/catalog/bdg2-wolf-science-alfreda/series.csv",
+      "bytes": 1082195,
+      "sha256": "ced4324f88d19fbfb4c88ff5e05821a2fda3086092e2a0d9844ab93437b41f55"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial1/metadata.json",
+      "bytes": 7618,
+      "sha256": "f47192dd017e3a1eca0ce4703480d22abca346c9135a8ec25f01fd8ec64a01ba"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial1/series.csv",
+      "bytes": 10865901,
+      "sha256": "196e5e9b565c716d5c468f3871971b550bfce9c139d7bf8909ab9c66885205a2"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial2/metadata.json",
+      "bytes": 5623,
+      "sha256": "35653929c148da7afbb645e0c4e8a77d9bf057f5a52b9d328cff2b04f3daca40"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial2/series.csv",
+      "bytes": 6410000,
+      "sha256": "edaee3b98ac5249086b545657bd43808a05acbb9dd7f5542ff58f90f4edd5b06"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial3/metadata.json",
+      "bytes": 6231,
+      "sha256": "327fb7dc9ef2bc4b92a8bf05b5dc30e8d4a1e605661ed03225d2e41370f140a4"
+    },
+    {
+      "path": "data/v3/catalog/opsd-industrial3/series.csv",
+      "bytes": 7446937,
+      "sha256": "1e366002e358b96be93aa04f055be6cd14472b36aebdac6c4a4a4067b8796c64"
+    },
+    {
+      "path": "data/v3/catalog/opsd-public1/metadata.json",
+      "bytes": 4067,
+      "sha256": "f83b14c5e3bd8e8068af789a9fbbe2f6caeef883c5f130546b20e9d6ac342efd"
+    },
+    {
+      "path": "data/v3/catalog/opsd-public1/series.csv",
+      "bytes": 2922884,
+      "sha256": "8cab62d68bb77781fffc23de407bc2d795141486e5693001eed404965221a7ca"
+    },
+    {
+      "path": "data/v3/catalog/opsd-public2/metadata.json",
+      "bytes": 3130,
+      "sha256": "5e97742f953d18cd6f81f20ea6c5f2dde68048ed2bc8c2004b70f160d485033e"
+    },
+    {
+      "path": "data/v3/catalog/opsd-public2/series.csv",
+      "bytes": 739494,
+      "sha256": "086b6852402c57207e2deea4b42899064621a68dd0f4dd530b536375f987fb18"
+    },
+    {
+      "path": "data/v3/catalog/rsf-hourly/metadata.json",
+      "bytes": 5851,
+      "sha256": "f64bdb7878863a645ba5ace475f9c63ded1cdfed627d027361ce01d9a0aa7793"
+    },
+    {
+      "path": "data/v3/catalog/rsf-hourly/series.csv",
+      "bytes": 654777,
+      "sha256": "48065b8ae116741798d3e1885ad4435ac3ae5348ba72b484853ceed9f53f9589"
+    },
+    {
+      "path": "data/v3/catalog/uci-steel-15min/metadata.json",
+      "bytes": 5611,
+      "sha256": "30c20eac4d8d251c7d1170d70b109cb036a161d07b23861c57c30161a4cc334a"
+    },
+    {
+      "path": "data/v3/catalog/uci-steel-15min/series.csv",
+      "bytes": 2132984,
+      "sha256": "831576c52913306622dd719d0f67429bd5c1dc4605354bd2337229d1e2f84f9d"
+    },
+    {
+      "path": "data/v3/catalog/uci-steel-hourly/metadata.json",
+      "bytes": 5350,
+      "sha256": "d1f6f7504d8ae6be4bed7c9dee60ec0e3f8f9932907327218ef8c3220c4d1cb7"
+    },
+    {
+      "path": "data/v3/catalog/uci-steel-hourly/series.csv",
+      "bytes": 550864,
+      "sha256": "6dd2061ffdd361d8f130ed8386e6350b805fe5227b9f79da32f6e0ffe6f51bed"
+    },
+    {
+      "path": "data/v3/catalog-manifest.json",
+      "bytes": 5084,
+      "sha256": "17a6a5e1d0a5f3bf1b1ef7c125dcbacda710aa42c5f06cbfb6a215e39b3c2f11"
+    },
+    {
+      "path": "data/v3/licenses/bdg2-LICENSE.txt",
+      "bytes": 1101,
+      "sha256": "993c6e1211fabe1623e577c506a277a0d4c670fd6036b55c0607b5f1cf48887c"
+    },
+    {
+      "path": "data/v3/licenses/bdg2-master-LICENSE.txt",
+      "bytes": 21227,
+      "sha256": "1df42bd84afc40e676a0cbf3d34e30e5151e3f0d995a68b406178dad3b0e23dc"
+    },
+    {
+      "path": "data/v3/licenses/cc-by-4.0.html",
+      "bytes": 48742,
+      "sha256": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650"
+    },
+    {
+      "path": "data/v3/licenses/opsd-datapackage.json",
+      "bytes": 127598,
+      "sha256": "93500241f4bb19f84f2668b100f53ec531e0c7dcbfa5d8759425c1375d588670"
+    },
+    {
+      "path": "data/v3/licenses/rsf-source-measured.html",
+      "bytes": 135089,
+      "sha256": "9bca3116268348c939da97cd1105fb9730cd1448b145fcab1e8136acf8d7661b"
+    },
+    {
+      "path": "data/v3/licenses/rsf-source-weather.html",
+      "bytes": 134042,
+      "sha256": "16eb10748ea04665d9b8973707bd4f1ff01f36af339f250db922edbecdd56f91"
+    },
+    {
+      "path": "data/v3/protocol-freeze.json",
+      "bytes": 358,
+      "sha256": "584eae234e3336420b5759bca28dfbd080ade9342a951502d78483a6f164f030"
+    },
+    {
+      "path": "data/v3/raw/bdg2-electricity.csv",
+      "bytes": 174239039,
+      "sha256": "039d909d8981e2d69eaeb366144e6ab7e84fa5e7e216aee42bddd95384a66418"
+    },
+    {
+      "path": "data/v3/raw/bdg2-metadata.csv",
+      "bytes": 272024,
+      "sha256": "992d0b29f24f96ad4332bc4dbb534b7bdd7dd2689aad093f94e93068ecddca02"
+    },
+    {
+      "path": "data/v3/raw/opsd-15min.csv",
+      "bytes": 60485116,
+      "sha256": "eca7dee5ac6e53373cd0209bc05ba3383cd860bfa5d5e995f74fa78db8857c58"
+    },
+    {
+      "path": "data/v3/raw/rsf-measured-2011.csv",
+      "bytes": 470556,
+      "sha256": "c6023512bdc191bc242fbd29df574972c5060b55f3ec375640b49424c8c53178"
+    },
+    {
+      "path": "data/v3/raw/rsf-weather-2011.csv",
+      "bytes": 851181,
+      "sha256": "f53df3059a3115fac4c9f4589d226f621af01f21c18026b117f7286386482b97"
+    },
+    {
+      "path": "data/v3/README.md",
+      "bytes": 3065,
+      "sha256": "eeb27421a0d2a1948578a2a8452f82069f6afe9d20b076fe0d311e168a74c0e8"
+    }
+  ],
+  "privateImportsIncluded": false,
+  "downloadUrl": "https://github.com/yangwei251003/nengce-pilot/releases/download/v3.1.1-open/public-research-data.zip",
+  "excludedReferenceDocuments": [
+    {
+      "path": "data/v3/raw/rsf-report-57785.pdf",
+      "reason": "Separate publication redistribution rights not established; not part of dataset CC BY assumption",
+      "url": "https://www.nrel.gov/docs/fy13osti/57785.pdf",
+      "sha256": "7ec0c4889e9f055d8a456fc947cf0c3b67838f3eb6d8940bd20cab597df83e8b"
+    }
+  ]
+}

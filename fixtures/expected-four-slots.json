@@ -1,0 +1,45 @@
+{
+  "status": "mathematically_derived_expected_not_measured",
+  "source_type": "synthetic_fixture",
+  "baseline_import_cost": 168,
+  "optimized_import_cost": 136,
+  "optimized_degradation_cost": 0.8,
+  "optimized_total_cost": 136.8,
+  "savings_absolute": 31.2,
+  "expected_energy_boundaries_kwh": [
+    50,
+    70,
+    90,
+    70,
+    50
+  ],
+  "expected_import_kw": [
+    40,
+    40,
+    60,
+    60
+  ],
+  "expected_charge_kw": [
+    20,
+    20,
+    0,
+    0
+  ],
+  "expected_discharge_kw": [
+    0,
+    0,
+    20,
+    20
+  ],
+  "numeric_tolerance": 1e-06,
+  "with_conditional_demand_increment": {
+    "initial_month_peak_kw": 70,
+    "rate_per_kw_month": 30,
+    "baseline_increment": 300,
+    "strategy_increment": 0,
+    "baseline_total": 468,
+    "strategy_total": 136.8,
+    "savings_absolute": 331.2,
+    "warning": "Conditional increment only; not a full monthly bill."
+  }
+}

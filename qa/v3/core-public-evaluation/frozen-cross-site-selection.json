@@ -1,0 +1,133 @@
+{
+  "created_at_utc": "2026-10-04T06:22:45.005330+00:00",
+  "stage": "after_development_before_external",
+  "development_ids": [
+    "bdg2-fox-assembly-tony",
+    "bdg2-fox-education-andre",
+    "bdg2-fox-education-charles",
+    "bdg2-fox-public-martin",
+    "bdg2-gator-assembly-marjorie",
+    "bdg2-gator-other-gertrude",
+    "bdg2-gator-public-marcie",
+    "bdg2-gator-public-marissa",
+    "bdg2-wolf-education-joaquin",
+    "bdg2-wolf-education-katie",
+    "bdg2-wolf-office-bobbie",
+    "bdg2-wolf-science-alfreda"
+  ],
+  "external_ids": [
+    "bdg2-bull-education-elva",
+    "bdg2-bull-education-mervin",
+    "bdg2-bull-office-rob",
+    "bdg2-bull-services-winford",
+    "bdg2-rat-education-jame",
+    "bdg2-rat-education-kelsey",
+    "bdg2-rat-office-avis",
+    "bdg2-rat-public-kelly",
+    "bdg2-robin-education-cecilia",
+    "bdg2-robin-education-margarito",
+    "bdg2-robin-education-megan",
+    "bdg2-robin-office-donald"
+  ],
+  "policy": {
+    "selected_index": 0,
+    "selected_model": "HistGradientBoosting",
+    "selection_reason": "HGB在开发滚动验证MAE改善13.63%，且胜出3/3窗，达到冻结门槛。",
+    "selection_policy": {
+      "minimum_mae_improvement_pct": 2.0,
+      "minimum_fold_wins": 2,
+      "observed_mae_improvement_pct": 13.629880537799721,
+      "observed_fold_wins": 3,
+      "baseline": "Daily naive"
+    },
+    "validation": [
+      {
+        "name": "HistGradientBoosting",
+        "n": 77534,
+        "mae_kw": 7.004021463761281
+      },
+      {
+        "name": "Daily naive",
+        "n": 77534,
+        "mae_kw": 8.10931084427477
+      },
+      {
+        "name": "Weekly naive",
+        "n": 77534,
+        "mae_kw": 8.591634627389274
+      }
+    ],
+    "rolling_validation": [
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 25052,
+            "mae_kw": 6.802839989122383
+          },
+          {
+            "name": "Daily naive",
+            "n": 25052,
+            "mae_kw": 7.779895098195753
+          },
+          {
+            "name": "Weekly naive",
+            "n": 25052,
+            "mae_kw": 8.338303241258183
+          }
+        ]
+      },
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 26085,
+            "mae_kw": 7.192975518284175
+          },
+          {
+            "name": "Daily naive",
+            "n": 26085,
+            "mae_kw": 8.371224270653633
+          },
+          {
+            "name": "Weekly naive",
+            "n": 26085,
+            "mae_kw": 8.800619355951696
+          }
+        ]
+      },
+      {
+        "models": [
+          {
+            "name": "HistGradientBoosting",
+            "n": 26397,
+            "mae_kw": 7.0082314796882414
+          },
+          {
+            "name": "Daily naive",
+            "n": 26397,
+            "mae_kw": 8.163124214872903
+          },
+          {
+            "name": "Weekly naive",
+            "n": 26397,
+            "mae_kw": 8.625543451907415
+          }
+        ]
+      }
+    ],
+    "absolute_q90_fraction": 0.28403783238100855,
+    "positive_q75_fraction": 0.07900734289952144,
+    "calibration_method": "Median development-building normalized residual quantile; external scale from 2016 only",
+    "external_train_end": "2016-12-31",
+    "model_parameters": {
+      "max_iter": 140,
+      "max_leaf_nodes": 15,
+      "learning_rate": 0.07,
+      "l2_regularization": 10,
+      "early_stopping": false,
+      "random_state": 42
+    }
+  },
+  "first_look_freeze_sha256": "82d8ba4596fb08d608f29412ac640bb26af464c6df570dfb3c8927b5f3f6fb2c"
+}

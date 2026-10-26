@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "fixture-four-slots",
+  "scenario_version_id": "fixture-four-slots-v1",
+  "name": "四时段合成核算夹具，不是业务证据",
+  "source_type": "scenario_derived",
+  "currency": "CNY",
+  "interval_minutes": 60,
+  "timeline": {
+    "kind": "source_local_naive",
+    "timezone": null,
+    "basis": "synthetic fixture"
+  },
+  "battery": {
+    "capacity_kwh": 100,
+    "min_soc": 0.1,
+    "max_soc": 0.9,
+    "initial_soc": 0.5,
+    "terminal_soc": 0.5,
+    "max_charge_kw": 20,
+    "max_discharge_kw": 20,
+    "charge_efficiency": 1,
+    "discharge_efficiency": 1,
+    "degradation_per_kwh_ac_throughput": 0.01,
+    "prevent_simultaneous_charge_discharge": true
+  },
+  "grid": {
+    "max_import_kw": null,
+    "max_export_kw": 0,
+    "prevent_simultaneous_import_export": true,
+    "pv_mode": "none"
+  },
+  "tariff": {
+    "source_type": "scenario_derived",
+    "daily_segments": [
+      {
+        "start_local": "00:00",
+        "end_local": "02:00",
+        "buy_per_kwh": 0.2,
+        "sell_per_kwh": 0
+      },
+      {
+        "start_local": "02:00",
+        "end_local": "24:00",
+        "buy_per_kwh": 1,
+        "sell_per_kwh": 0
+      }
+    ],
+    "demand_mode": "disabled",
+    "demand_rate_per_kw_month": 0,
+    "initial_month_peak_kw": 0
+  },
+  "assumptions": [
+    "All data and tariff values are synthetic math fixtures, not customer economics.",
+    "Four one-hour intervals only; no forecast benchmark.",
+    "All strategies use the same battery state and costs."
+  ]
+}

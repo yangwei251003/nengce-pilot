@@ -1,0 +1,276 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-10-04T06:28:39.958385+00:00",
+  "timing": "post-evaluation evidence assembly; not a new freeze or new blind test",
+  "defect": "The model first-look snapshot scanned catalog/*.json, but metadata files live in catalog/*/metadata.json. Its data_catalog_hashes was empty and remains unchanged.",
+  "first_model_evaluation_at_utc": "2026-10-04T06:22:35.504455+00:00",
+  "existing_pre_evaluation_manifest": {
+    "path": "data\\v3\\catalog-manifest.json",
+    "sha256": "17a6a5e1d0a5f3bf1b1ef7c125dcbacda710aa42c5f06cbfb6a215e39b3c2f11",
+    "last_write_utc": "2026-10-04T06:13:01.994505+00:00"
+  },
+  "existing_pre_evaluation_verification": {
+    "path": "qa\\v3\\data-final-verification.json",
+    "sha256": "1ae20a321fe0029940078e377f80a666183c43ca6bd6ea47ab945be1c1632299",
+    "last_write_utc": "2026-10-04T06:17:28.490659+00:00"
+  },
+  "runtime_protection": "Every evaluation load verifies source and normalized file SHA256 against source catalog metadata; no data mutation occurred.",
+  "checks": [
+    {
+      "dataset_id": "bdg2-bull-education-elva",
+      "metadata_sha256": "52b43a696b79758f2dbe71fb155c4a4b8722f6ac93aa2a1f8be6d1addbe1800c",
+      "normalized_sha256": "6ed279eac01315274501c2e462773fae15c4ed2b7ae244091fce736791f06311",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-bull-education-mervin",
+      "metadata_sha256": "17c7eb0f1e3c83ba069d2953fb2dbb71b629897b83d67cfcc2e8ded18786c074",
+      "normalized_sha256": "f9926bc265a08d9df4a361453b44547f7342dde09a421b7a3a965555b898ee1a",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-bull-office-rob",
+      "metadata_sha256": "941d2d79cc552ef7b349978c6c039a250a3fa62020e34f1e8d52a2eb1327704e",
+      "normalized_sha256": "37fa253e232ef636c5631fa84ee144f6abf17660dd4451d06c3a14a926e709ab",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-bull-services-winford",
+      "metadata_sha256": "66814a3064ca822fe5de5627e9ba0c7ff9ac204e0a70e96cc41954c7b20d7cc8",
+      "normalized_sha256": "b350d0e2cda1338a97ef31b755bb6c25a6b7336465b0962a29e59bf30c4e3099",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-fox-assembly-tony",
+      "metadata_sha256": "6dc3747434a51742d51f53d006142937ee38fd14599f7d557255c194f0eb0c73",
+      "normalized_sha256": "50a82e202e88c20aebee896ec97257e5f7c8a58239571357c324e480e2d97c18",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-fox-education-andre",
+      "metadata_sha256": "89db32968ff5bb2a0438026e035428d5b619af03691d2f2de530d43282cdd1e7",
+      "normalized_sha256": "022aa868d962d14e34c1596c3a87372b481a9a1b62f7d354d160b4b4cd1fba6c",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-fox-education-charles",
+      "metadata_sha256": "6289d852bd87a3f6e89884fb6cbaa5019c0af210c49cb22b2d993eacdefcaa9d",
+      "normalized_sha256": "99e6176b404702d9ea9f3d823c3b65d155bac7a4a3e4a678679ad54328048dc4",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-fox-public-martin",
+      "metadata_sha256": "34cdc1076b721dd0ecfdf5ec7db78541e5ce0dbfe136f152921e06c8f5a45029",
+      "normalized_sha256": "31655e3a3679bbc08215c0183b9878120547ba6176f862c04a124101919d7467",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-gator-assembly-marjorie",
+      "metadata_sha256": "d77026bdcbc48cf1608ec0db52940195a1f2a4038d0226b792e6810c43bbe15b",
+      "normalized_sha256": "4339c927656825c5b534b7cb34f876ee106ef14ea5f07a066353f49f79416364",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-gator-other-gertrude",
+      "metadata_sha256": "3e1a60c8f48a858c45771a5947dc5ad8329a3a8f644ee9112d07db8bc1fc8ce4",
+      "normalized_sha256": "0094d10dd1da1ac0468ed6d39eb9f1f33081dfa3b3bb356c591ddacddd05f01d",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-gator-public-marcie",
+      "metadata_sha256": "d7b10e47d0d899dd9f8969d954e9c86dd4e45e66289916eb0a840e97ba30140c",
+      "normalized_sha256": "160085f7b53f4160f7d752df12163d55b9f01a8f78a7c0a3f81ac1ab7f6013d2",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-gator-public-marissa",
+      "metadata_sha256": "31c6f641ed75f4ee87ba3d08899f495aaba66aa18973ba876ad3efbc4aba67de",
+      "normalized_sha256": "46eb7824fda01445427a3fa90ae722c19230154c111fa2b2b7f96bdd059f0dcd",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-rat-education-jame",
+      "metadata_sha256": "e00d52cfd70fb0326d24b887e93071aab545745a9853e5b6a66e4c2d89ca2298",
+      "normalized_sha256": "6cf65f180e2b9b1c87a00049e593fe247517e78d27d17f34b5e8f0dd2558ead6",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-rat-education-kelsey",
+      "metadata_sha256": "1cdbacf3013a94d101baf3fa8da2cf545acdd4d263f4226698435c3e492ba74d",
+      "normalized_sha256": "c0fb78266a26baaca62749d4bb1a9ba29cfe0b39967b607edaa1dab59095b785",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-rat-office-avis",
+      "metadata_sha256": "98bfb1e04d766c965258f48a3e2c13a61f33ee4f45f65985a42a8108ba7bd6a3",
+      "normalized_sha256": "db7c7b89a32998a1c6ddf3daa58bc0c6ecb40f0a85603a93389bf27e431ea777",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-rat-public-kelly",
+      "metadata_sha256": "b797d5fd075521b96a10f49542221c630e80031265709aa33b87d80bdf1c8f3e",
+      "normalized_sha256": "06aa210c0d31283f00497fe1058a654878f83f03f13db1f5e9b5bfc0c11da06b",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-robin-education-cecilia",
+      "metadata_sha256": "09c76abe541df6d29a5dc281fae26892f75632ca80eb7a30930edc39936ff90f",
+      "normalized_sha256": "b071e964d110c4821255c9f6db6cd84bd4ffd1bc2a39d12da22b9cecabd2a8a1",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-robin-education-margarito",
+      "metadata_sha256": "328b03d2acefe72a746709eab22f44d38e8c0951e6619c7532c5b449f4a35bf7",
+      "normalized_sha256": "617f996b4334d0aaee7d97df823fa31f739a7f1e403023e72da9d4f89a15f956",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-robin-education-megan",
+      "metadata_sha256": "4bef57b85a379749e3966393d7f983d1df171b6db2423454ce5ad24c9c5b55e5",
+      "normalized_sha256": "ca2ca16306a2ba034c94643c665759960c36c41573bfd60a154b09e3d0d162e3",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-robin-office-donald",
+      "metadata_sha256": "f4cab9791688f98a1ee64b4610f3db27dc41ed92ad97d04669439f8e556d50a9",
+      "normalized_sha256": "4673915ccdcef46864bf02b15b12ab48d37c84de33f3f25abaff94cab75b65f7",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-wolf-education-joaquin",
+      "metadata_sha256": "e3d54e6ae6d754b410f3cb646cfd39c7bd8e8bef65ef45830971ca1df3b18457",
+      "normalized_sha256": "6124a6fb6e3c37f972ebec63e2de2ec7b04cdad2f148996ba9263f46cacc2aa4",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-wolf-education-katie",
+      "metadata_sha256": "f0ac9f8a98be6b25d758b32a6648722c5557730b7a89b8ad4296b5261015d146",
+      "normalized_sha256": "96194a506acde11c0b82a148bd64f8364ed7c527ed04aebbb89cdad9fe608c60",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-wolf-office-bobbie",
+      "metadata_sha256": "7d8e668a971dd1725257524eabf793fc3c7cb2f913715d3c0b42c94ec10d0efb",
+      "normalized_sha256": "d7ab30861250bf73a7679a97cc84d3b78db3a50e0805397899062d4b87fa2bee",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "bdg2-wolf-science-alfreda",
+      "metadata_sha256": "1262ea02ca1080e7182595daf83c331b7e596f68ce1ec3b53b38f0b4d4c1eb03",
+      "normalized_sha256": "ced4324f88d19fbfb4c88ff5e05821a2fda3086092e2a0d9844ab93437b41f55",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "opsd-industrial1",
+      "metadata_sha256": "f47192dd017e3a1eca0ce4703480d22abca346c9135a8ec25f01fd8ec64a01ba",
+      "normalized_sha256": "196e5e9b565c716d5c468f3871971b550bfce9c139d7bf8909ab9c66885205a2",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "opsd-industrial2",
+      "metadata_sha256": "35653929c148da7afbb645e0c4e8a77d9bf057f5a52b9d328cff2b04f3daca40",
+      "normalized_sha256": "edaee3b98ac5249086b545657bd43808a05acbb9dd7f5542ff58f90f4edd5b06",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "opsd-industrial3",
+      "metadata_sha256": "327fb7dc9ef2bc4b92a8bf05b5dc30e8d4a1e605661ed03225d2e41370f140a4",
+      "normalized_sha256": "1e366002e358b96be93aa04f055be6cd14472b36aebdac6c4a4a4067b8796c64",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "opsd-public1",
+      "metadata_sha256": "f83b14c5e3bd8e8068af789a9fbbe2f6caeef883c5f130546b20e9d6ac342efd",
+      "normalized_sha256": "8cab62d68bb77781fffc23de407bc2d795141486e5693001eed404965221a7ca",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "opsd-public2",
+      "metadata_sha256": "5e97742f953d18cd6f81f20ea6c5f2dde68048ed2bc8c2004b70f160d485033e",
+      "normalized_sha256": "086b6852402c57207e2deea4b42899064621a68dd0f4dd530b536375f987fb18",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "rsf-hourly",
+      "metadata_sha256": "f64bdb7878863a645ba5ace475f9c63ded1cdfed627d027361ce01d9a0aa7793",
+      "normalized_sha256": "48065b8ae116741798d3e1885ad4435ac3ae5348ba72b484853ceed9f53f9589",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "uci-steel-15min",
+      "metadata_sha256": "30c20eac4d8d251c7d1170d70b109cb036a161d07b23861c57c30161a4cc334a",
+      "normalized_sha256": "831576c52913306622dd719d0f67429bd5c1dc4605354bd2337229d1e2f84f9d",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    },
+    {
+      "dataset_id": "uci-steel-hourly",
+      "metadata_sha256": "d1f6f7504d8ae6be4bed7c9dee60ec0e3f8f9932907327218ef8c3220c4d1cb7",
+      "normalized_sha256": "6dd2061ffdd361d8f130ed8386e6350b805fe5227b9f79da32f6e0ffe6f51bed",
+      "matches_pre_evaluation_verification": true,
+      "matches_pre_evaluation_manifest": true,
+      "matches_runtime_adapter_contract": true
+    }
+  ]
+}
